@@ -5,8 +5,11 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
+import com.github.notificationcron.data.makeCronHumanReadable
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,9 +18,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val cronString = cronText.text.toString()
+
+            val alertText = try {
+                makeCronHumanReadable(cronString, Locale.US)
+            } catch (e: IllegalArgumentException) {
+                getString(R.string.invalid_cron_entered)
+            }
+
+            Snackbar.make(view, alertText, Snackbar.LENGTH_LONG).show()
         }
     }
 
