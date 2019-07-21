@@ -1,14 +1,20 @@
-package com.github.notificationcron
+package com.github.notificationcron.ui
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import com.github.notificationcron.R
 import com.github.notificationcron.data.makeCronHumanReadable
+import com.github.notificationcron.data.model.NotificationCron
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import java.time.LocalDateTime
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,12 +24,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        val notificationCronViewModel = ViewModelProviders.of(this).get(NotificationCronViewModel::class.java)
+
+        val notificationCronObserver = Observer<List<NotificationCron>> { notificationCrons ->
+            Log.i("MainActivity", "" + notificationCrons.size)
+        }
+        notificationCronViewModel.allNotificationCrons.observe(this, notificationCronObserver)
 
         fab.setOnClickListener { view ->
             val cronString = cronText.text.toString()
 
             val alertText = try {
-                makeCronHumanReadable(cronString, Locale.US)
+                val result = makeCronHumanReadable(cronString, Locale.US)
+                // TODO remove demo
+                notificationCronViewModel.insert(NotificationCron(cron = cronString, nextNotification = LocalDateTime.now()))
+                result
             } catch (e: IllegalArgumentException) {
                 getString(R.string.invalid_cron_entered)
             }
