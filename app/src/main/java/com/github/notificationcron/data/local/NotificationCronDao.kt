@@ -1,23 +1,26 @@
 package com.github.notificationcron.data.local
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.github.notificationcron.data.model.NotificationCron
 
 @Dao
 interface NotificationCronDao {
 
-    @Query("SELECT * FROM notification_cron ORDER BY id")
-    fun findAll(): LiveData<List<NotificationCron>>
+    @Query("SELECT * FROM notification_cron")
+    fun findAll(): List<NotificationCron>
 
-    @Query("SELECT * FROM notification_cron WHERE id IN (:notificationCronIds)")
-    fun findAllByIds(notificationCronIds: IntArray): List<NotificationCron>
+    @Query("SELECT * FROM notification_cron ORDER BY id")
+    fun findAllOrderedAndLive(): LiveData<List<NotificationCron>>
+
+    @Query("SELECT * FROM notification_cron WHERE id=:notificationCronId")
+    fun findById(notificationCronId: Int): NotificationCron
 
     @Insert
     fun insertAll(vararg notificationCrons: NotificationCron)
+
+    @Update
+    fun update(notificationCron: NotificationCron)
 
     @Delete
     fun delete(notificationCron: NotificationCron)

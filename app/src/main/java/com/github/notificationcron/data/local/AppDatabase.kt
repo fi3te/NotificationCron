@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.*
 import com.github.notificationcron.data.model.NotificationCron
 
-@Database(entities = [NotificationCron::class], version = 1, exportSchema = true)
+@Database(entities = [NotificationCron::class], version = 1)
 @TypeConverters(TimeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 

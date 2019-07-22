@@ -1,7 +1,6 @@
 package com.github.notificationcron.ui
 
 import android.os.Bundle
-import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
@@ -9,12 +8,11 @@ import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.github.notificationcron.R
-import com.github.notificationcron.data.makeCronHumanReadable
+import com.github.notificationcron.data.*
 import com.github.notificationcron.data.model.NotificationCron
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import java.time.LocalDateTime
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,23 +25,43 @@ class MainActivity : AppCompatActivity() {
         val notificationCronViewModel = ViewModelProviders.of(this).get(NotificationCronViewModel::class.java)
 
         val notificationCronObserver = Observer<List<NotificationCron>> { notificationCrons ->
-            Log.i("MainActivity", "" + notificationCrons.size)
+            // TODO display
         }
         notificationCronViewModel.allNotificationCrons.observe(this, notificationCronObserver)
 
-        fab.setOnClickListener { view ->
+
+        saveButton.setOnClickListener {
             val cronString = cronText.text.toString()
 
             val alertText = try {
-                val result = makeCronHumanReadable(cronString, Locale.US)
+                var result = makeCronHumanReadable(cronString, Locale.US)
                 // TODO remove demo
-                notificationCronViewModel.insert(NotificationCron(cron = cronString, nextNotification = LocalDateTime.now()))
+
+                if (cronIntervalIsBigEnough(cronString)) {
+                    val notificationCron = NotificationCron(cron = cronString)
+                    // TODO title
+                    // TODO text
+                    computeNextExecution(notificationCron)
+                    notificationCronViewModel.insert(notificationCron)
+                } else {
+                    result = "cron interval is not big enough"
+                }
                 result
             } catch (e: IllegalArgumentException) {
                 getString(R.string.invalid_cron_entered)
             }
 
-            Snackbar.make(view, alertText, Snackbar.LENGTH_LONG).show()
+            Snackbar.make(it, alertText, Snackbar.LENGTH_LONG).show()
+        }
+
+        startButton.setOnClickListener {
+            notificationCronViewModel.scheduleAlarms(this)
+            Snackbar.make(it, "Started", Snackbar.LENGTH_LONG).show()
+        }
+
+        stopButton.setOnClickListener {
+            notificationCronViewModel.removeAlarms(this)
+            Snackbar.make(it, "Stopped", Snackbar.LENGTH_LONG).show()
         }
     }
 

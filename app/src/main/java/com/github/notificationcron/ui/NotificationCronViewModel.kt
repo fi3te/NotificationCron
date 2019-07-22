@@ -1,6 +1,7 @@
 package com.github.notificationcron.ui
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -19,10 +20,20 @@ class NotificationCronViewModel(application: Application) : AndroidViewModel(app
     init {
         val database = AppDatabase.getDatabase(application)
         notificationCronDao = database.notificationCronDao()
-        allNotificationCrons = notificationCronDao.findAll()
+        allNotificationCrons = notificationCronDao.findAllOrderedAndLive()
     }
 
     fun insert(notificationCron: NotificationCron) = viewModelScope.launch(Dispatchers.IO) {
         notificationCronDao.insertAll(notificationCron)
+    }
+
+    fun scheduleAlarms(context: Context) = viewModelScope.launch(Dispatchers.IO) {
+        // TODO replace
+        com.github.notificationcron.data.scheduleAlarms(context)
+    }
+
+    fun removeAlarms(context: Context) = viewModelScope.launch(Dispatchers.IO) {
+        // TODO replace
+        com.github.notificationcron.data.removeAlarms(context)
     }
 }

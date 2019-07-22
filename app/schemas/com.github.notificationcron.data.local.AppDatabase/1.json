@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "af0c62ac300cae62d6db6cf656ce9749",
+    "identityHash": "8ae76afb9ebfb5ad9a32052b21038f46",
     "entities": [
       {
         "tableName": "notification_cron",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cron` TEXT NOT NULL, `notification_title` TEXT NOT NULL, `notification_text` TEXT NOT NULL, `next_notification` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `cron` TEXT NOT NULL, `notification_title` TEXT NOT NULL, `notification_text` TEXT NOT NULL, `next_notification` INTEGER)",
         "fields": [
           {
             "fieldPath": "id",
@@ -36,7 +36,7 @@
             "fieldPath": "nextNotification",
             "columnName": "next_notification",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -52,7 +52,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'af0c62ac300cae62d6db6cf656ce9749')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8ae76afb9ebfb5ad9a32052b21038f46')"
     ]
   }
 }

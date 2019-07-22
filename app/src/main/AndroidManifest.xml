@@ -32,6 +32,12 @@
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
+
+        <receiver android:name=".data.receiver.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.github.notificationcron.ALARM" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
