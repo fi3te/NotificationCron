@@ -1,54 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <EditText
-        android:id="@+id/cronText"
+        android:id="@+id/cronInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_view_padding"
         android:layout_marginTop="@dimen/default_view_padding"
         android:layout_marginEnd="@dimen/default_view_padding"
         android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:hint="@string/cron_input_hint"
+        android:importantForAutofill="no"
+        android:inputType="textNoSuggestions" />
 
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/notificationTitleInput"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Start"
-        app:layout_constraintStart_toStartOf="@+id/cronText"
-        app:layout_constraintTop_toBottomOf="@+id/saveButton" />
+        android:layout_marginStart="@dimen/default_view_padding"
+        android:layout_marginEnd="@dimen/default_view_padding"
+        android:ems="10"
+        android:hint="@string/notification_title_input_hint"
+        android:importantForAutofill="no"
+        android:inputType="text" />
 
-    <Button
-        android:id="@+id/stopButton"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/notificationTextInput"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Stop"
-        app:layout_constraintStart_toStartOf="@+id/cronText"
-        app:layout_constraintTop_toBottomOf="@+id/startButton" />
+        android:layout_marginStart="@dimen/default_view_padding"
+        android:layout_marginEnd="@dimen/default_view_padding"
+        android:ems="10"
+        android:hint="@string/notification_text_input_hint"
+        android:importantForAutofill="no"
+        android:inputType="text" />
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Save"
-        app:layout_constraintStart_toStartOf="@+id/cronText"
-        app:layout_constraintTop_toBottomOf="@+id/cronText" />
+        android:layout_marginStart="@dimen/default_view_padding"
+        android:layout_marginEnd="@dimen/default_view_padding"
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Start" />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Stop" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cronRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
+</LinearLayout>

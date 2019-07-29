@@ -7,6 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.notificationcron.R
 import com.github.notificationcron.data.*
 import com.github.notificationcron.data.model.NotificationCron
@@ -17,30 +20,46 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var notificationCronAdapter: NotificationCronAdapter
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val notificationCronViewModel = ViewModelProviders.of(this).get(NotificationCronViewModel::class.java)
+        layoutManager = LinearLayoutManager(this)
+        notificationCronAdapter = NotificationCronAdapter(Collections.emptyList())
 
-        val notificationCronObserver = Observer<List<NotificationCron>> { notificationCrons ->
-            // TODO display
-        }
-        notificationCronViewModel.allNotificationCrons.observe(this, notificationCronObserver)
+        recyclerView = findViewById(R.id.cronRecyclerView)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = notificationCronAdapter
+        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
+
+        val notificationCronViewModel = ViewModelProviders.of(this).get(NotificationCronViewModel::class.java)
+        notificationCronViewModel.allNotificationCrons.observe(this, Observer<List<NotificationCron>> { notificationCrons ->
+            notificationCronAdapter.setData(notificationCrons)
+        })
+
+
+
+
+
+
 
 
         saveButton.setOnClickListener {
-            val cronString = cronText.text.toString()
+            val cronString = cronInput.text.toString()
+            val notificationTitle = notificationTitleInput.text.toString()
+            val notificationText = notificationTextInput.text.toString()
 
             val alertText = try {
                 var result = makeCronHumanReadable(cronString, Locale.US)
                 // TODO remove demo
 
                 if (cronIntervalIsBigEnough(cronString)) {
-                    val notificationCron = NotificationCron(cron = cronString)
-                    // TODO title
-                    // TODO text
+                    val notificationCron = NotificationCron(cron = cronString, notificationTitle = notificationTitle, notificationText = notificationText)
                     computeNextExecution(notificationCron)
                     notificationCronViewModel.insert(notificationCron)
                 } else {

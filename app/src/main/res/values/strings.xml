@@ -4,4 +4,7 @@
     <string name="notification_channel_description">Notification channel</string>
     <string name="action_settings">Settings</string>
     <string name="invalid_cron_entered">Invalid cron entered</string>
+    <string name="cron_input_hint">Cron expression</string>
+    <string name="notification_title_input_hint">Notification title</string>
+    <string name="notification_text_input_hint">Notification text</string>
 </resources>
