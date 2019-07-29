@@ -1,25 +1,34 @@
 package com.github.notificationcron.ui
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.WhichButton
+import com.afollestad.materialdialogs.actions.setActionButtonEnabled
+import com.afollestad.materialdialogs.customview.customView
+import com.afollestad.materialdialogs.customview.getCustomView
 import com.github.notificationcron.R
-import com.github.notificationcron.data.*
+import com.github.notificationcron.data.computeNextExecution
 import com.github.notificationcron.data.model.NotificationCron
-
+import com.github.notificationcron.data.parseCron
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var notificationCronViewModel: NotificationCronViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var notificationCronAdapter: NotificationCronAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
@@ -37,40 +46,52 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = notificationCronAdapter
         recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
 
-        val notificationCronViewModel = ViewModelProviders.of(this).get(NotificationCronViewModel::class.java)
-        notificationCronViewModel.allNotificationCrons.observe(this, Observer<List<NotificationCron>> { notificationCrons ->
-            notificationCronAdapter.setData(notificationCrons)
-        })
+        notificationCronViewModel = ViewModelProviders.of(this).get(NotificationCronViewModel::class.java)
+        notificationCronViewModel.allNotificationCrons.observe(
+            this,
+            Observer<List<NotificationCron>> { notificationCrons ->
+                notificationCronAdapter.setData(notificationCrons)
+            })
 
+        addButton.setOnClickListener {
+            MaterialDialog(this).show {
+                title(R.string.create_scheduled_notifications)
 
+                customView(R.layout.dialog_add_notification_cron)
+                val customView = getCustomView()
+                val cronInput = customView.findViewById<EditText>(R.id.cronInput)
+                val notificationTitleInput = customView.findViewById<EditText>(R.id.notificationTitleInput)
+                val notificationTextInput = customView.findViewById<EditText>(R.id.notificationTextInput)
+                cronInput.addTextChangedListener(object : TextWatcher {
 
+                    override fun afterTextChanged(p0: Editable?) {
+                        val cronString = cronInput.text.toString()
+                        try {
+                            parseCron(cronString)
+                            setActionButtonEnabled(WhichButton.POSITIVE, true)
+                        } catch (e: IllegalArgumentException) {
+                            setActionButtonEnabled(WhichButton.POSITIVE, false)
+                        }
+                    }
 
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    }
 
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    }
+                })
 
-
-
-        saveButton.setOnClickListener {
-            val cronString = cronInput.text.toString()
-            val notificationTitle = notificationTitleInput.text.toString()
-            val notificationText = notificationTextInput.text.toString()
-
-            val alertText = try {
-                var result = makeCronHumanReadable(cronString, Locale.US)
-                // TODO remove demo
-
-                if (cronIntervalIsBigEnough(cronString)) {
-                    val notificationCron = NotificationCron(cron = cronString, notificationTitle = notificationTitle, notificationText = notificationText)
-                    computeNextExecution(notificationCron)
-                    notificationCronViewModel.insert(notificationCron)
-                } else {
-                    result = "cron interval is not big enough"
+                positiveButton(R.string.create) {
+                    val notificationCron = NotificationCron(
+                        cron = cronInput.text.toString(),
+                        notificationTitle = notificationTitleInput.text.toString(),
+                        notificationText = notificationTextInput.text.toString()
+                    )
+                    createNotificationCron(notificationCron)
                 }
-                result
-            } catch (e: IllegalArgumentException) {
-                getString(R.string.invalid_cron_entered)
+                negativeButton(R.string.cancel)
+                setActionButtonEnabled(WhichButton.POSITIVE, false)
             }
-
-            Snackbar.make(it, alertText, Snackbar.LENGTH_LONG).show()
         }
 
         startButton.setOnClickListener {
@@ -98,5 +119,10 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    fun createNotificationCron(notificationCron: NotificationCron) {
+        computeNextExecution(notificationCron)
+        notificationCronViewModel.insert(notificationCron)
     }
 }

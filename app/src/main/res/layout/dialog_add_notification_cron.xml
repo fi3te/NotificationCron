@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/default_view_padding"
+    android:paddingEnd="@dimen/default_view_padding">
+
+    <EditText
+        android:id="@+id/cronInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/cron_input_hint"
+        android:importantForAutofill="no"
+        android:inputType="textNoSuggestions" />
+
+    <EditText
+        android:id="@+id/notificationTitleInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/notification_title_input_hint"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/notificationTextInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/notification_text_input_hint"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+</LinearLayout>

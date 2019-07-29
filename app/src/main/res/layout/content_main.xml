@@ -9,53 +9,13 @@
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <EditText
-        android:id="@+id/cronInput"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_view_padding"
         android:layout_marginTop="@dimen/default_view_padding"
         android:layout_marginEnd="@dimen/default_view_padding"
-        android:ems="10"
-        android:hint="@string/cron_input_hint"
-        android:importantForAutofill="no"
-        android:inputType="textNoSuggestions" />
-
-    <EditText
-        android:id="@+id/notificationTitleInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_view_padding"
-        android:layout_marginEnd="@dimen/default_view_padding"
-        android:ems="10"
-        android:hint="@string/notification_title_input_hint"
-        android:importantForAutofill="no"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/notificationTextInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_view_padding"
-        android:layout_marginEnd="@dimen/default_view_padding"
-        android:ems="10"
-        android:hint="@string/notification_text_input_hint"
-        android:importantForAutofill="no"
-        android:inputType="text" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_view_padding"
-        android:layout_marginEnd="@dimen/default_view_padding"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Save" />
 
         <Button
             android:id="@+id/startButton"

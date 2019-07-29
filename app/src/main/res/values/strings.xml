@@ -7,4 +7,7 @@
     <string name="cron_input_hint">Cron expression</string>
     <string name="notification_title_input_hint">Notification title</string>
     <string name="notification_text_input_hint">Notification text</string>
+    <string name="create_scheduled_notifications">Create scheduled notifications</string>
+    <string name="create">Create</string>
+    <string name="cancel">Cancel</string>
 </resources>

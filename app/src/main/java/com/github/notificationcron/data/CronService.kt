@@ -40,8 +40,3 @@ fun computeNextExecution(notificationCron: NotificationCron) {
         null
     }
 }
-
-fun cronIntervalIsBigEnough(cronString: String): Boolean {
-    val cronComponents = cronString.split(" ")
-    return cronComponents.isNotEmpty() && !cronComponents[0].contains("*")
-}
