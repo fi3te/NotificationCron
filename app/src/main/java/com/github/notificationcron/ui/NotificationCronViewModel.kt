@@ -34,8 +34,16 @@ class NotificationCronViewModel(application: Application) : AndroidViewModel(app
         scheduleAlarm(context, newNotificationCron)
     }
 
+    fun update(context: Context, notificationCron: NotificationCron) = viewModelScope.launch(Dispatchers.IO) {
+        removeAlarm(context, notificationCron.id)
+
+        computeNextExecution(notificationCron)
+        notificationCronDao.update(notificationCron)
+        scheduleAlarm(context, notificationCron)
+    }
+
     fun delete(context: Context, notificationCron: NotificationCron) = viewModelScope.launch(Dispatchers.IO) {
-        removeAlarm(context, notificationCron)
+        removeAlarm(context, notificationCron.id)
         notificationCronDao.delete(notificationCron)
     }
 

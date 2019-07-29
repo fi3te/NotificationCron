@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import com.github.notificationcron.data.TIME_FORMATTER
 import com.github.notificationcron.data.local.AppDatabase
-import com.github.notificationcron.data.model.NotificationCron
 import com.github.notificationcron.data.scheduleNextAlarm
 import com.github.notificationcron.ui.showNotification
 
@@ -37,12 +36,12 @@ class AlarmReceiver : BroadcastReceiver() {
         private const val ALARM_INTENT_ACTION = "com.github.notificationcron.ALARM"
         private const val NOTIFICATION_CRON_ID_EXTRA = "NOTIFICATION_CRON_ID_EXTRA"
 
-        fun getPendingIntent(context: Context, notificationCron: NotificationCron): PendingIntent {
+        fun getPendingIntent(context: Context, notificationCronId: Long): PendingIntent {
             val intent = Intent(context, AlarmReceiver::class.java)
             intent.action = ALARM_INTENT_ACTION
             // a unique type is needed so that the alarm manager regards two intent as different (Intent.filterEquals)
-            intent.type = "$notificationCron.id"
-            intent.putExtra(NOTIFICATION_CRON_ID_EXTRA, notificationCron.id)
+            intent.type = "$notificationCronId"
+            intent.putExtra(NOTIFICATION_CRON_ID_EXTRA, notificationCronId)
             return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
         }
     }

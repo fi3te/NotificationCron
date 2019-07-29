@@ -12,28 +12,40 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/deleteNotificationCronButton" />
+        android:layout_toStartOf="@+id/editNotificationCronButton" />
 
     <TextView
         android:id="@+id/notificationTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cronText"
-        android:layout_toStartOf="@+id/deleteNotificationCronButton" />
+        android:layout_toStartOf="@+id/editNotificationCronButton" />
 
     <TextView
         android:id="@+id/notificationTextText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/notificationTitleText"
-        android:layout_toStartOf="@+id/deleteNotificationCronButton" />
+        android:layout_toStartOf="@+id/editNotificationCronButton" />
 
     <TextView
         android:id="@+id/nextNotificationText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/notificationTextText"
-        android:layout_toStartOf="@+id/deleteNotificationCronButton" />
+        android:layout_toStartOf="@+id/editNotificationCronButton" />
+
+    <ImageButton
+        android:id="@+id/editNotificationCronButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/default_view_padding"
+        android:layout_toStartOf="@+id/deleteNotificationCronButton"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/edit"
+        android:tint="?attr/image_button_tint"
+        app:srcCompat="@drawable/ic_edit_grey_600_36dp" />
 
     <ImageButton
         android:id="@+id/deleteNotificationCronButton"

@@ -1,25 +1,16 @@
 package com.github.notificationcron.ui
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.WhichButton
-import com.afollestad.materialdialogs.actions.setActionButtonEnabled
-import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.customview.getCustomView
 import com.github.notificationcron.R
 import com.github.notificationcron.data.model.NotificationCron
-import com.github.notificationcron.data.parseCron
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -51,43 +42,8 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
             })
 
         addButton.setOnClickListener {
-            MaterialDialog(this).show {
-                title(R.string.create_scheduled_notifications)
-
-                customView(R.layout.dialog_add_notification_cron)
-                val customView = getCustomView()
-                val cronInput = customView.findViewById<EditText>(R.id.cronInput)
-                val notificationTitleInput = customView.findViewById<EditText>(R.id.notificationTitleInput)
-                val notificationTextInput = customView.findViewById<EditText>(R.id.notificationTextInput)
-                cronInput.addTextChangedListener(object : TextWatcher {
-
-                    override fun afterTextChanged(p0: Editable?) {
-                        val cronString = cronInput.text.toString()
-                        try {
-                            parseCron(cronString)
-                            setActionButtonEnabled(WhichButton.POSITIVE, true)
-                        } catch (e: IllegalArgumentException) {
-                            setActionButtonEnabled(WhichButton.POSITIVE, false)
-                        }
-                    }
-
-                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    }
-
-                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    }
-                })
-
-                positiveButton(R.string.create) {
-                    val notificationCron = NotificationCron(
-                        cron = cronInput.text.toString(),
-                        notificationTitle = notificationTitleInput.text.toString(),
-                        notificationText = notificationTextInput.text.toString()
-                    )
-                    notificationCronViewModel.create(this@MainActivity, notificationCron)
-                }
-                negativeButton(R.string.cancel)
-                setActionButtonEnabled(WhichButton.POSITIVE, false)
+            showCreateDialog(this) {
+                notificationCronViewModel.create(this, it)
             }
         }
     }
@@ -108,6 +64,12 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
                 return true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun editNotificationCron(notificationCron: NotificationCron) {
+        showUpdateDialog(this, notificationCron) {
+            notificationCronViewModel.update(this, it)
         }
     }
 

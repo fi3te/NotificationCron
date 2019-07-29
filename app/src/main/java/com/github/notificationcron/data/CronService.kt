@@ -20,6 +20,15 @@ fun parseCron(cronString: String): Cron {
     return cronParser.parse(cronString).validate()
 }
 
+fun isCronValid(cronString: String): Boolean {
+    return try {
+        parseCron(cronString)
+        true
+    } catch (e: IllegalArgumentException) {
+        false
+    }
+}
+
 fun makeCronHumanReadable(cronString: String, locale: Locale): String {
     val cron = parseCron(cronString)
     val descriptor = CronDescriptor.instance(locale)

@@ -18,10 +18,12 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val notificationTitleText: TextView = view.findViewById(R.id.notificationTitleText)
         val notificationTextText: TextView = view.findViewById(R.id.notificationTextText)
         val nextNotificationText: TextView = view.findViewById(R.id.nextNotificationText)
+        val editNotificationCronButton: ImageButton = view.findViewById(R.id.editNotificationCronButton)
         val deleteNotificationCronButton: ImageButton = view.findViewById(R.id.deleteNotificationCronButton)
     }
 
     interface ButtonListener {
+        fun editNotificationCron(notificationCron: NotificationCron)
         fun deleteNotificationCron(notificationCron: NotificationCron)
     }
 
@@ -29,6 +31,10 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val notificationCronItem = LayoutInflater.from(parent.context)
             .inflate(R.layout.notification_cron_item, parent, false)
         val viewHolder = ViewHolder(notificationCronItem)
+        viewHolder.editNotificationCronButton.setOnClickListener {
+            val notificationCron = data[viewHolder.adapterPosition]
+            buttonListener.editNotificationCron(notificationCron)
+        }
         viewHolder.deleteNotificationCronButton.setOnClickListener {
             val notificationCron = data[viewHolder.adapterPosition]
             buttonListener.deleteNotificationCron(notificationCron)

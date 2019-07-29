@@ -29,7 +29,7 @@ fun scheduleAlarm(context: Context, notificationCron: NotificationCron, alarmMan
         alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             triggerAtMillis,
-            AlarmReceiver.getPendingIntent(context, notificationCron)
+            AlarmReceiver.getPendingIntent(context, notificationCron.id)
         )
     }
 }
@@ -47,7 +47,7 @@ fun scheduleNextAlarm(context: Context, notificationCronDao: NotificationCronDao
     }
 }
 
-fun removeAlarm(context: Context, notificationCron: NotificationCron) {
+fun removeAlarm(context: Context, notificationCronId: Long) {
     val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    alarmManager.cancel(AlarmReceiver.getPendingIntent(context, notificationCron))
+    alarmManager.cancel(AlarmReceiver.getPendingIntent(context, notificationCronId))
 }
