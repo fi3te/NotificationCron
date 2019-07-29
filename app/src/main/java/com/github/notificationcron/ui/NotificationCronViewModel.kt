@@ -11,7 +11,7 @@ import com.github.notificationcron.data.local.NotificationCronDao
 import com.github.notificationcron.data.model.NotificationCron
 import com.github.notificationcron.data.removeAlarm
 import com.github.notificationcron.data.scheduleAlarm
-import com.github.notificationcron.data.scheduleAlarms
+import com.github.notificationcron.data.scheduleNextAlarms
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -48,6 +48,6 @@ class NotificationCronViewModel(application: Application) : AndroidViewModel(app
     }
 
     fun repairSchedule(context: Context) = viewModelScope.launch(Dispatchers.IO) {
-        scheduleAlarms(context)
+        scheduleNextAlarms(context)
     }
 }

@@ -22,7 +22,23 @@ fun scheduleAlarms(context: Context) {
     }
 }
 
-fun scheduleAlarm(context: Context, notificationCron: NotificationCron, alarmManager: AlarmManager, zoneId: ZoneId) {
+fun scheduleNextAlarms(context: Context) {
+    val database = AppDatabase.getDatabase(context)
+    val notificationCronDao = database.notificationCronDao()
+    val allNotificationCrons = notificationCronDao.findAll()
+
+    val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+    val zoneId = TimeZone.getDefault().toZoneId()
+
+    for (notificationCron in allNotificationCrons) {
+        computeNextExecution(notificationCron)
+        notificationCronDao.update(notificationCron)
+        scheduleAlarm(context, notificationCron, alarmManager, zoneId)
+    }
+}
+
+private fun scheduleAlarm(context: Context, notificationCron: NotificationCron, alarmManager: AlarmManager, zoneId: ZoneId) {
     notificationCron.nextNotification?.let {
         val zonedDateTime = it.atZone(zoneId)
         val triggerAtMillis = zonedDateTime.toInstant().toEpochMilli()

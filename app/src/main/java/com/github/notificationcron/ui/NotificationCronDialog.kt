@@ -58,7 +58,7 @@ fun showUpdateDialog(
 }
 
 private fun addCronInputView(dialog: MaterialDialog) {
-    dialog.customView(R.layout.dialog_add_notification_cron)
+    dialog.customView(R.layout.dialog_input_notification_cron)
     val cronInput = dialog.getCustomView().findViewById<EditText>(R.id.cronInput)
     addCronValidation(dialog, cronInput)
 }
