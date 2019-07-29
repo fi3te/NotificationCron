@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 
 @Entity(tableName = "notification_cron")
 data class NotificationCron(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     @ColumnInfo(name = "cron") val cron: String,
     @ColumnInfo(name = "notification_title") val notificationTitle: String = "",
     @ColumnInfo(name = "notification_text") val notificationText: String = "",

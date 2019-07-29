@@ -18,15 +18,12 @@ import com.afollestad.materialdialogs.actions.setActionButtonEnabled
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.github.notificationcron.R
-import com.github.notificationcron.data.computeNextExecution
 import com.github.notificationcron.data.model.NotificationCron
 import com.github.notificationcron.data.parseCron
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener {
 
     private lateinit var notificationCronViewModel: NotificationCronViewModel
     private lateinit var recyclerView: RecyclerView
@@ -39,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         layoutManager = LinearLayoutManager(this)
-        notificationCronAdapter = NotificationCronAdapter(Collections.emptyList())
+        notificationCronAdapter = NotificationCronAdapter(Collections.emptyList(), this)
 
         recyclerView = findViewById(R.id.cronRecyclerView)
         recyclerView.layoutManager = layoutManager
@@ -87,21 +84,11 @@ class MainActivity : AppCompatActivity() {
                         notificationTitle = notificationTitleInput.text.toString(),
                         notificationText = notificationTextInput.text.toString()
                     )
-                    createNotificationCron(notificationCron)
+                    notificationCronViewModel.create(this@MainActivity, notificationCron)
                 }
                 negativeButton(R.string.cancel)
                 setActionButtonEnabled(WhichButton.POSITIVE, false)
             }
-        }
-
-        startButton.setOnClickListener {
-            notificationCronViewModel.scheduleAlarms(this)
-            Snackbar.make(it, "Started", Snackbar.LENGTH_LONG).show()
-        }
-
-        stopButton.setOnClickListener {
-            notificationCronViewModel.removeAlarms(this)
-            Snackbar.make(it, "Stopped", Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -121,8 +108,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun createNotificationCron(notificationCron: NotificationCron) {
-        computeNextExecution(notificationCron)
-        notificationCronViewModel.insert(notificationCron)
+    override fun deleteNotificationCron(notificationCron: NotificationCron) {
+        notificationCronViewModel.delete(this, notificationCron)
     }
 }

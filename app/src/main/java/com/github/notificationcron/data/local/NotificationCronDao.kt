@@ -14,17 +14,14 @@ interface NotificationCronDao {
     fun findAllOrderedAndLive(): LiveData<List<NotificationCron>>
 
     @Query("SELECT * FROM notification_cron WHERE id=:notificationCronId")
-    fun findById(notificationCronId: Int): NotificationCron
+    fun findById(notificationCronId: Long): NotificationCron
 
     @Insert
-    fun insertAll(vararg notificationCrons: NotificationCron)
+    fun insert(notificationCron: NotificationCron): Long
 
     @Update
     fun update(notificationCron: NotificationCron)
 
     @Delete
     fun delete(notificationCron: NotificationCron)
-
-    @Query("DELETE FROM notification_cron WHERE id=:notificationCronId")
-    fun deleteById(notificationCronId: Int)
 }

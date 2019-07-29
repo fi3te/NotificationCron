@@ -13,8 +13,8 @@ class AlarmReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (context != null && intent != null) {
-            val notificationCronId = intent.getIntExtra(NOTIFICATION_CRON_ID_EXTRA, Int.MIN_VALUE)
-            if (notificationCronId > Int.MIN_VALUE) {
+            val notificationCronId = intent.getLongExtra(NOTIFICATION_CRON_ID_EXTRA, Long.MIN_VALUE)
+            if (notificationCronId > Long.MIN_VALUE) {
                 val database = AppDatabase.getDatabase(context)
                 val notificationCronDao = database.notificationCronDao()
                 Thread(Runnable {
@@ -34,6 +34,8 @@ class AlarmReceiver : BroadcastReceiver() {
         fun getPendingIntent(context: Context, notificationCron: NotificationCron): PendingIntent {
             val intent = Intent(context, AlarmReceiver::class.java)
             intent.action = ALARM_INTENT_ACTION
+            // a unique type is needed so that the alarm manager regards two intent as different (Intent.filterEquals)
+            intent.type = "$notificationCron.id"
             intent.putExtra(NOTIFICATION_CRON_ID_EXTRA, notificationCron.id)
             return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
         }

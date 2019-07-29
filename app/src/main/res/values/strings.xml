@@ -10,4 +10,5 @@
     <string name="create_scheduled_notifications">Create scheduled notifications</string>
     <string name="create">Create</string>
     <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
 </resources>

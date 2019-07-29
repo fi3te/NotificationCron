@@ -5,9 +5,12 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.github.notificationcron.data.computeNextExecution
 import com.github.notificationcron.data.local.AppDatabase
 import com.github.notificationcron.data.local.NotificationCronDao
 import com.github.notificationcron.data.model.NotificationCron
+import com.github.notificationcron.data.removeAlarm
+import com.github.notificationcron.data.scheduleAlarm
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -23,17 +26,15 @@ class NotificationCronViewModel(application: Application) : AndroidViewModel(app
         allNotificationCrons = notificationCronDao.findAllOrderedAndLive()
     }
 
-    fun insert(notificationCron: NotificationCron) = viewModelScope.launch(Dispatchers.IO) {
-        notificationCronDao.insertAll(notificationCron)
+    fun create(context: Context, notificationCron: NotificationCron) = viewModelScope.launch(Dispatchers.IO) {
+        computeNextExecution(notificationCron)
+        val id = notificationCronDao.insert(notificationCron)
+        val newNotificationCron = notificationCron.copy(id = id)
+        scheduleAlarm(context, newNotificationCron)
     }
 
-    fun scheduleAlarms(context: Context) = viewModelScope.launch(Dispatchers.IO) {
-        // TODO replace
-        com.github.notificationcron.data.scheduleAlarms(context)
-    }
-
-    fun removeAlarms(context: Context) = viewModelScope.launch(Dispatchers.IO) {
-        // TODO replace
-        com.github.notificationcron.data.removeAlarms(context)
+    fun delete(context: Context, notificationCron: NotificationCron) = viewModelScope.launch(Dispatchers.IO) {
+        removeAlarm(context, notificationCron)
+        notificationCronDao.delete(notificationCron)
     }
 }

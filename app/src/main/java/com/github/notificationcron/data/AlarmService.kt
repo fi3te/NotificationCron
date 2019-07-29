@@ -22,17 +22,6 @@ fun scheduleAlarms(context: Context) {
     }
 }
 
-fun removeAlarms(context: Context) {
-    val database = AppDatabase.getDatabase(context)
-    val allNotificationCrons = database.notificationCronDao().findAll()
-
-    val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-    for (notificationCron in allNotificationCrons) {
-        alarmManager.cancel(AlarmReceiver.getPendingIntent(context, notificationCron))
-    }
-}
-
 fun scheduleAlarm(context: Context, notificationCron: NotificationCron, alarmManager: AlarmManager, zoneId: ZoneId) {
     notificationCron.nextNotification?.let {
         val zonedDateTime = it.atZone(zoneId)
@@ -56,4 +45,9 @@ fun scheduleNextAlarm(context: Context, notificationCronDao: NotificationCronDao
     if (notificationCron.nextNotification != null) {
         scheduleAlarm(context, notificationCron)
     }
+}
+
+fun removeAlarm(context: Context, notificationCron: NotificationCron) {
+    val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+    alarmManager.cancel(AlarmReceiver.getPendingIntent(context, notificationCron))
 }
