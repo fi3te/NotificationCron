@@ -1,4 +1,5 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="default_view_padding">16dp</dimen>
+    <dimen name="recycler_view_last_item_padding">88dp</dimen>
 </resources>
