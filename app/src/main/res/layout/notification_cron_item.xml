@@ -28,6 +28,13 @@
         android:layout_below="@+id/notificationTitleText"
         android:layout_toStartOf="@+id/deleteNotificationCronButton" />
 
+    <TextView
+        android:id="@+id/nextNotificationText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notificationTextText"
+        android:layout_toStartOf="@+id/deleteNotificationCronButton" />
+
     <ImageButton
         android:id="@+id/deleteNotificationCronButton"
         android:layout_width="wrap_content"

@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.notificationcron.R
+import com.github.notificationcron.data.DATE_TIME_FORMATTER
 import com.github.notificationcron.data.model.NotificationCron
 
 class NotificationCronAdapter(private var data: List<NotificationCron>, private val buttonListener: ButtonListener) :
@@ -16,6 +17,7 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val cronText: TextView = view.findViewById(R.id.cronText)
         val notificationTitleText: TextView = view.findViewById(R.id.notificationTitleText)
         val notificationTextText: TextView = view.findViewById(R.id.notificationTextText)
+        val nextNotificationText: TextView = view.findViewById(R.id.nextNotificationText)
         val deleteNotificationCronButton: ImageButton = view.findViewById(R.id.deleteNotificationCronButton)
     }
 
@@ -39,6 +41,8 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         holder.cronText.text = notificationCron.cron
         holder.notificationTitleText.text = notificationCron.notificationTitle
         holder.notificationTextText.text = notificationCron.notificationText
+        holder.nextNotificationText.text = notificationCron.nextNotification?.format(DATE_TIME_FORMATTER)
+            ?: holder.itemView.resources.getString(R.string.no_next_notification)
     }
 
     override fun getItemCount() = data.size

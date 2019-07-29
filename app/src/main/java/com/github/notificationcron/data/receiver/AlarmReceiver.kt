@@ -4,6 +4,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import com.github.notificationcron.data.TIME_FORMATTER
 import com.github.notificationcron.data.local.AppDatabase
 import com.github.notificationcron.data.model.NotificationCron
 import com.github.notificationcron.data.scheduleNextAlarm
@@ -19,7 +20,12 @@ class AlarmReceiver : BroadcastReceiver() {
                 val notificationCronDao = database.notificationCronDao()
                 Thread(Runnable {
                     val notificationCron = notificationCronDao.findById(notificationCronId)
-                    showNotification(context, notificationCron.notificationTitle, notificationCron.notificationText)
+
+                    val timePrefix: String = notificationCron.nextNotification?.let {
+                        "${it.format(TIME_FORMATTER)} "
+                    } ?: ""
+
+                    showNotification(context, timePrefix + notificationCron.notificationTitle, notificationCron.notificationText)
                     scheduleNextAlarm(context, notificationCronDao, notificationCron)
                 }).start()
             }

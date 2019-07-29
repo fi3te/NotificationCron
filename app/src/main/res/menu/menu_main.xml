@@ -2,8 +2,9 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.github.notificationcron.ui.MainActivity">
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
+
+    <item android:id="@+id/repairSchedule"
+          android:title="@string/repair_schedule"
           android:orderInCategory="100"
           app:showAsAction="never"/>
 </menu>
