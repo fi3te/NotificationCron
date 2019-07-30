@@ -86,5 +86,17 @@
             android:textStyle="bold" />
 
         <include layout="@layout/template_license_apache_hint" />
+
+        <include layout="@layout/template_license_separator" />
+
+        <TextView
+            android:id="@+id/apacheText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/software_licenses_activity_padding"
+            android:textSize="11sp"
+            tools:ignore="SmallSp" />
+
+
     </LinearLayout>
 </ScrollView>
