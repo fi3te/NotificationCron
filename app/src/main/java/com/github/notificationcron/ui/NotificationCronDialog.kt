@@ -57,6 +57,19 @@ fun showUpdateDialog(
     }
 }
 
+fun showDeleteDialog(
+    windowContext: Context,
+    delete: () -> Unit
+) {
+    MaterialDialog(windowContext).show {
+        title(R.string.delete_scheduled_notifications)
+        positiveButton(R.string.delete) {
+            delete()
+        }
+        negativeButton(R.string.cancel)
+    }
+}
+
 private fun addCronInputView(dialog: MaterialDialog) {
     dialog.customView(R.layout.dialog_input_notification_cron)
     val cronInput = dialog.getCustomView().findViewById<EditText>(R.id.cronInput)

@@ -74,6 +74,8 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
     }
 
     override fun deleteNotificationCron(notificationCron: NotificationCron) {
-        notificationCronViewModel.delete(this, notificationCron)
+        showDeleteDialog(this) {
+            notificationCronViewModel.delete(this, notificationCron)
+        }
     }
 }

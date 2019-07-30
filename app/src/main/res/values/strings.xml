@@ -10,6 +10,7 @@
     <string name="edit_scheduled_notifications">Edit scheduled notifications</string>
     <string name="create_scheduled_notifications">Create scheduled notifications</string>
     <string name="update_scheduled_notifications">Update scheduled notifications</string>
+    <string name="delete_scheduled_notifications">Delete scheduled notifications</string>
     <string name="create">Create</string>
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
