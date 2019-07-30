@@ -3,7 +3,6 @@
     <string name="notification_channel_name">Notifications</string>
     <string name="notification_channel_description">Notification channel</string>
     <string name="repair_schedule">Repair schedule</string>
-    <string name="invalid_cron_entered">Invalid cron entered</string>
     <string name="cron_input_hint">Cron expression</string>
     <string name="notification_title_input_hint">Notification title</string>
     <string name="notification_text_input_hint">Notification text</string>
@@ -17,4 +16,5 @@
     <string name="delete">Delete</string>
     <string name="no_next_notification">No next notification</string>
     <string name="licenses">Licenses</string>
+    <string name="apache_license_hint">Licensed under the Apache License, Version 2.0 (copy below)</string>
 </resources>
