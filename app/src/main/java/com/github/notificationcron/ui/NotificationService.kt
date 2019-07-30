@@ -7,18 +7,20 @@ import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.github.notificationcron.R
+import com.github.notificationcron.data.getDayAndTimeString
 import java.util.concurrent.atomic.AtomicInteger
 
-private const val NOTIFICATION_CHANNEL_ID = "NOTIFICATION_CHANNEL_ID"
-private const val INITIAL_NOTIFICATION_ID = 5000
-private val NOTIFICATION_ID_COUNTER = AtomicInteger(INITIAL_NOTIFICATION_ID)
 
-private fun newNotificationId(): Int {
+private const val NOTIFICATION_CHANNEL_ID = "NOTIFICATION_CHANNEL_ID"
+private val NOTIFICATION_ID_COUNTER = AtomicInteger()
+
+fun newNotificationId(): Int {
     while (true) {
         val existingValue = NOTIFICATION_ID_COUNTER.get()
-        val newValue = existingValue + 1
+        // restriction to compute an id smaller than 2147483647
+        val newValue = (existingValue % 21) + 1
         if (NOTIFICATION_ID_COUNTER.compareAndSet(existingValue, newValue)) {
-            return newValue
+            return "$newValue${getDayAndTimeString()}".toInt()
         }
     }
 }
