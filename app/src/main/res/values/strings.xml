@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NotificationCron</string>
+    <string name="app_name">Notification Cron</string>
     <string name="notification_channel_name">Notifications</string>
     <string name="notification_channel_description">Notification channel</string>
     <string name="repair_schedule">Repair schedule</string>
