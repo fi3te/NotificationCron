@@ -7,9 +7,8 @@
     <string name="cron_input_hint">Cron expression</string>
     <string name="notification_title_input_hint">Notification title</string>
     <string name="notification_text_input_hint">Notification text</string>
-    <string name="edit_scheduled_notifications">Edit scheduled notifications</string>
     <string name="create_scheduled_notifications">Create scheduled notifications</string>
-    <string name="update_scheduled_notifications">Update scheduled notifications</string>
+    <string name="edit_scheduled_notifications">Edit scheduled notifications</string>
     <string name="delete_scheduled_notifications">Delete scheduled notifications</string>
     <string name="create">Create</string>
     <string name="update">Update</string>
@@ -17,4 +16,5 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="no_next_notification">No next notification</string>
+    <string name="licenses">Licenses</string>
 </resources>

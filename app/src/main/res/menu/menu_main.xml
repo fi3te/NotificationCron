@@ -7,4 +7,9 @@
           android:title="@string/repair_schedule"
           android:orderInCategory="100"
           app:showAsAction="never"/>
+
+    <item android:id="@+id/licenses"
+        android:title="@string/licenses"
+        android:orderInCategory="200"
+        app:showAsAction="never"/>
 </menu>

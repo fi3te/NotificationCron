@@ -39,7 +39,7 @@ fun showUpdateDialog(
     update: (notificationCron: NotificationCron) -> Unit
 ) {
     MaterialDialog(windowContext).show {
-        title(R.string.update_scheduled_notifications)
+        title(R.string.edit_scheduled_notifications)
 
         addCronInputView(this)
         setInput(this, value)

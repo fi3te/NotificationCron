@@ -1,5 +1,6 @@
 package com.github.notificationcron.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.notificationcron.R
 import com.github.notificationcron.data.model.NotificationCron
+import com.github.notificationcron.ui.licenses.LicensesActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -61,6 +63,10 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
         return when (item.itemId) {
             R.id.repairSchedule -> {
                 notificationCronViewModel.repairSchedule(this)
+                return true
+            }
+            R.id.licenses -> {
+                startActivity(Intent(this, LicensesActivity::class.java))
                 return true
             }
             else -> super.onOptionsItemSelected(item)

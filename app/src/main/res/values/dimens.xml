@@ -1,5 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="default_view_padding">16dp</dimen>
+    <dimen name="software_licenses_activity_padding">8dp</dimen>
+    <dimen name="software_licenses_activity_library_text_size">16sp</dimen>
     <dimen name="recycler_view_last_item_padding">88dp</dimen>
 </resources>
