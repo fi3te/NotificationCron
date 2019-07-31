@@ -39,7 +39,7 @@ fun createNotificationChannel(context: Context, notificationManager: Notificatio
 
 fun createNotification(context: Context, title: String, text: String): Notification {
     val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-        .setSmallIcon(R.mipmap.ic_launcher)
+        .setSmallIcon(R.drawable.notification_icon)
         .setContentTitle(title)
         .setContentText(text)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
