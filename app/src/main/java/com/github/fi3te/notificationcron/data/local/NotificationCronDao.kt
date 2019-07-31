@@ -1,8 +1,8 @@
-package com.github.notificationcron.data.local
+package com.github.fi3te.notificationcron.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.github.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.NotificationCron
 
 @Dao
 interface NotificationCronDao {

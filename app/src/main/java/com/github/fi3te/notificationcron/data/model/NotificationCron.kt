@@ -1,4 +1,4 @@
-package com.github.notificationcron.data.model
+package com.github.fi3te.notificationcron.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,4 +1,4 @@
-package com.github.notificationcron.ui
+package com.github.fi3te.notificationcron.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.github.notificationcron.R
-import com.github.notificationcron.data.DATE_TIME_FORMATTER
-import com.github.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.R
+import com.github.fi3te.notificationcron.data.DATE_TIME_FORMATTER
+import com.github.fi3te.notificationcron.data.model.NotificationCron
 
 class NotificationCronAdapter(private var data: List<NotificationCron>, private val buttonListener: ButtonListener) :
     RecyclerView.Adapter<NotificationCronAdapter.ViewHolder>() {

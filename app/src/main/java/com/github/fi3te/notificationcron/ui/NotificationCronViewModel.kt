@@ -1,17 +1,17 @@
-package com.github.notificationcron.ui
+package com.github.fi3te.notificationcron.ui
 
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.github.notificationcron.data.computeNextExecution
-import com.github.notificationcron.data.local.AppDatabase
-import com.github.notificationcron.data.local.NotificationCronDao
-import com.github.notificationcron.data.model.NotificationCron
-import com.github.notificationcron.data.removeAlarm
-import com.github.notificationcron.data.scheduleAlarm
-import com.github.notificationcron.data.scheduleNextAlarms
+import com.github.fi3te.notificationcron.data.computeNextExecution
+import com.github.fi3te.notificationcron.data.local.AppDatabase
+import com.github.fi3te.notificationcron.data.local.NotificationCronDao
+import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.removeAlarm
+import com.github.fi3te.notificationcron.data.scheduleAlarm
+import com.github.fi3te.notificationcron.data.scheduleNextAlarms
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.github.notificationcron.ui
+package com.github.fi3te.notificationcron.ui
 
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test

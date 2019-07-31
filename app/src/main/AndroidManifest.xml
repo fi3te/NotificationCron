@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.notificationcron">
+    package="com.github.fi3te.notificationcron">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -38,7 +38,7 @@
         </receiver>
         <receiver android:name=".data.receiver.AlarmReceiver">
             <intent-filter>
-                <action android:name="com.github.notificationcron.ALARM" />
+                <action android:name="com.github.fi3te.notificationcron.ALARM" />
             </intent-filter>
         </receiver>
     </application>

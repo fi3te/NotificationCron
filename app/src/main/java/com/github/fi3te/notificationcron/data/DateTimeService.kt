@@ -1,6 +1,6 @@
 @file:Suppress("SpellCheckingInspection")
 
-package com.github.notificationcron.data
+package com.github.fi3te.notificationcron.data
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

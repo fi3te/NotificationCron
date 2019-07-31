@@ -1,13 +1,13 @@
-package com.github.notificationcron.data.receiver
+package com.github.fi3te.notificationcron.data.receiver
 
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.github.notificationcron.data.TIME_FORMATTER
-import com.github.notificationcron.data.local.AppDatabase
-import com.github.notificationcron.data.scheduleNextAlarm
-import com.github.notificationcron.ui.showNotification
+import com.github.fi3te.notificationcron.data.TIME_FORMATTER
+import com.github.fi3te.notificationcron.data.local.AppDatabase
+import com.github.fi3te.notificationcron.data.scheduleNextAlarm
+import com.github.fi3te.notificationcron.ui.showNotification
 
 class AlarmReceiver : BroadcastReceiver() {
 
@@ -33,7 +33,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
     companion object {
 
-        private const val ALARM_INTENT_ACTION = "com.github.notificationcron.ALARM"
+        private const val ALARM_INTENT_ACTION = "com.github.fi3te.notificationcron.ALARM"
         private const val NOTIFICATION_CRON_ID_EXTRA = "NOTIFICATION_CRON_ID_EXTRA"
 
         fun getPendingIntent(context: Context, notificationCronId: Long): PendingIntent {

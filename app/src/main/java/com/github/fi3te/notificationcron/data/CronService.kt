@@ -1,4 +1,4 @@
-package com.github.notificationcron.data
+package com.github.fi3te.notificationcron.data
 
 import com.cronutils.descriptor.CronDescriptor
 import com.cronutils.model.Cron
@@ -6,7 +6,7 @@ import com.cronutils.model.CronType
 import com.cronutils.model.definition.CronDefinitionBuilder
 import com.cronutils.model.time.ExecutionTime
 import com.cronutils.parser.CronParser
-import com.github.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.NotificationCron
 import java.time.ZonedDateTime
 import java.util.*
 

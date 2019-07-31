@@ -1,10 +1,10 @@
-package com.github.notificationcron.ui.licenses
+package com.github.fi3te.notificationcron.ui.licenses
 
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.github.notificationcron.R
+import com.github.fi3te.notificationcron.R
 import kotlinx.coroutines.*
 
 class LicensesActivity : AppCompatActivity() {

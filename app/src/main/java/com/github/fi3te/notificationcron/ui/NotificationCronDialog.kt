@@ -1,4 +1,4 @@
-package com.github.notificationcron.ui
+package com.github.fi3te.notificationcron.ui
 
 import android.content.Context
 import android.text.Editable
@@ -9,9 +9,9 @@ import com.afollestad.materialdialogs.WhichButton
 import com.afollestad.materialdialogs.actions.setActionButtonEnabled
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
-import com.github.notificationcron.R
-import com.github.notificationcron.data.isCronValid
-import com.github.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.R
+import com.github.fi3te.notificationcron.data.isCronValid
+import com.github.fi3te.notificationcron.data.model.NotificationCron
 
 fun showCreateDialog(windowContext: Context, create: (notificationCron: NotificationCron) -> Unit) {
     MaterialDialog(windowContext).show {

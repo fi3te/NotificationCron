@@ -1,4 +1,4 @@
-package com.github.notificationcron.data.local
+package com.github.fi3te.notificationcron.data.local
 
 import androidx.room.TypeConverter
 import java.time.Instant

@@ -1,4 +1,4 @@
-package com.github.notificationcron.ui
+package com.github.fi3te.notificationcron.ui
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -6,8 +6,8 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import com.github.notificationcron.R
-import com.github.notificationcron.data.getDayAndTimeString
+import com.github.fi3te.notificationcron.R
+import com.github.fi3te.notificationcron.data.getDayAndTimeString
 import java.util.concurrent.atomic.AtomicInteger
 
 

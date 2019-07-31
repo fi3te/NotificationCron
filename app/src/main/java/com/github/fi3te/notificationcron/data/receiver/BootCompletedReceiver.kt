@@ -1,9 +1,9 @@
-package com.github.notificationcron.data.receiver
+package com.github.fi3te.notificationcron.data.receiver
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.github.notificationcron.data.scheduleAlarms
+import com.github.fi3te.notificationcron.data.scheduleAlarms
 
 class BootCompletedReceiver : BroadcastReceiver() {
 

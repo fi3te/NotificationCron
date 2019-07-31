@@ -1,11 +1,11 @@
-package com.github.notificationcron.data
+package com.github.fi3te.notificationcron.data
 
 import android.app.AlarmManager
 import android.content.Context
-import com.github.notificationcron.data.local.AppDatabase
-import com.github.notificationcron.data.local.NotificationCronDao
-import com.github.notificationcron.data.model.NotificationCron
-import com.github.notificationcron.data.receiver.AlarmReceiver
+import com.github.fi3te.notificationcron.data.local.AppDatabase
+import com.github.fi3te.notificationcron.data.local.NotificationCronDao
+import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.receiver.AlarmReceiver
 import java.time.ZoneId
 import java.util.*
 
