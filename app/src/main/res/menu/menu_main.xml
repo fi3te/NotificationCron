@@ -12,4 +12,9 @@
         android:title="@string/licenses"
         android:orderInCategory="200"
         app:showAsAction="never"/>
+
+    <item android:id="@+id/imprint"
+        android:title="@string/imprint"
+        android:orderInCategory="300"
+        app:showAsAction="never"/>
 </menu>

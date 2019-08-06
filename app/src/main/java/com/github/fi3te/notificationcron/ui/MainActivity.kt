@@ -69,6 +69,10 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
                 startActivity(Intent(this, LicensesActivity::class.java))
                 return true
             }
+            R.id.imprint -> {
+                showImprintDialog(this)
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

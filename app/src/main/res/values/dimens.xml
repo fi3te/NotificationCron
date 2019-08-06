@@ -4,4 +4,6 @@
     <dimen name="software_licenses_activity_padding">8dp</dimen>
     <dimen name="software_licenses_activity_library_text_size">16sp</dimen>
     <dimen name="recycler_view_last_item_padding">88dp</dimen>
+    <dimen name="imprint_dialog_padding">20dp</dimen>
+    <dimen name="imprint_dialog_spacing">10dp</dimen>
 </resources>

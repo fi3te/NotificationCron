@@ -16,5 +16,7 @@
     <string name="delete">Delete</string>
     <string name="no_next_notification">No next notification</string>
     <string name="licenses">Licenses</string>
+    <string name="imprint">Imprint</string>
+    <string name="contact">E-Mail: fiete.wennier@gmail.com \nTel.: on request</string>
     <string name="apache_license_hint">Licensed under the Apache License, Version 2.0 (copy below)</string>
 </resources>
