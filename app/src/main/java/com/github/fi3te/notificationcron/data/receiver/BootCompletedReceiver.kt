@@ -9,7 +9,9 @@ class BootCompletedReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         if (context != null) {
-            scheduleAlarms(context)
+            Thread(Runnable {
+                scheduleAlarms(context)
+            }).start()
         }
     }
 }
