@@ -77,6 +77,10 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
         }
     }
 
+    override fun testNotificationCron(notificationCron: NotificationCron) {
+        showNotification(this, notificationCron)
+    }
+
     override fun editNotificationCron(notificationCron: NotificationCron) {
         showUpdateDialog(this, notificationCron) {
             notificationCronViewModel.update(this, it)

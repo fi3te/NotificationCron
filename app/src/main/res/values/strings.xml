@@ -12,6 +12,8 @@
     <string name="create">Create</string>
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
+    <string name="options">Options</string>
+    <string name="test">Test</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="no_next_notification">No next notification</string>

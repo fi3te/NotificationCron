@@ -7,7 +7,9 @@ import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.github.fi3te.notificationcron.R
+import com.github.fi3te.notificationcron.data.TIME_FORMATTER
 import com.github.fi3te.notificationcron.data.getDayAndTimeString
+import com.github.fi3te.notificationcron.data.model.NotificationCron
 import java.util.concurrent.atomic.AtomicInteger
 
 
@@ -52,4 +54,11 @@ fun showNotification(context: Context, title: String, text: String) {
         context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     createNotificationChannel(context, notificationManager)
     notificationManager.notify(newNotificationId(), notification)
+}
+
+fun showNotification(context: Context, notificationCron: NotificationCron) {
+    val timePrefix: String = notificationCron.nextNotification?.let {
+        "${it.format(TIME_FORMATTER)} "
+    } ?: ""
+    showNotification(context, timePrefix + notificationCron.notificationTitle, notificationCron.notificationText)
 }

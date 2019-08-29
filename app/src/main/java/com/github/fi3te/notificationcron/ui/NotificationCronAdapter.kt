@@ -1,9 +1,8 @@
 package com.github.fi3te.notificationcron.ui
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageButton
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.fi3te.notificationcron.R
@@ -18,11 +17,11 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val notificationTitleText: TextView = view.findViewById(R.id.notificationTitleText)
         val notificationTextText: TextView = view.findViewById(R.id.notificationTextText)
         val nextNotificationText: TextView = view.findViewById(R.id.nextNotificationText)
-        val editNotificationCronButton: ImageButton = view.findViewById(R.id.editNotificationCronButton)
-        val deleteNotificationCronButton: ImageButton = view.findViewById(R.id.deleteNotificationCronButton)
+        val notificationCronOptionsButton: ImageButton = view.findViewById(R.id.notificationCronOptionsButton)
     }
 
     interface ButtonListener {
+        fun testNotificationCron(notificationCron: NotificationCron)
         fun editNotificationCron(notificationCron: NotificationCron)
         fun deleteNotificationCron(notificationCron: NotificationCron)
     }
@@ -31,13 +30,24 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val notificationCronItem = LayoutInflater.from(parent.context)
             .inflate(R.layout.notification_cron_item, parent, false)
         val viewHolder = ViewHolder(notificationCronItem)
-        viewHolder.editNotificationCronButton.setOnClickListener {
+        viewHolder.notificationCronOptionsButton.setOnClickListener {
             val notificationCron = data[viewHolder.adapterPosition]
-            buttonListener.editNotificationCron(notificationCron)
-        }
-        viewHolder.deleteNotificationCronButton.setOnClickListener {
-            val notificationCron = data[viewHolder.adapterPosition]
-            buttonListener.deleteNotificationCron(notificationCron)
+
+            val popup = PopupMenu(it.context, it, Gravity.END)
+
+            popup.menu.add(Menu.NONE, 1, Menu.NONE, R.string.test)
+            popup.menu.add(Menu.NONE, 2, Menu.NONE, R.string.edit)
+            popup.menu.add(Menu.NONE, 3, Menu.NONE, R.string.delete)
+
+            popup.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    1 -> buttonListener.testNotificationCron(notificationCron)
+                    2 -> buttonListener.editNotificationCron(notificationCron)
+                    3 -> buttonListener.deleteNotificationCron(notificationCron)
+                }
+                true
+            }
+            popup.show()
         }
         return viewHolder
     }
