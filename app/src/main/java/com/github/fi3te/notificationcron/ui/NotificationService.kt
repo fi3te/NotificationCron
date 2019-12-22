@@ -17,14 +17,13 @@ private const val NOTIFICATION_CHANNEL_ID = "NOTIFICATION_CHANNEL_ID"
 private val NOTIFICATION_ID_COUNTER = AtomicInteger()
 
 fun newNotificationId(): Int {
-    while (true) {
+    var newValue: Int
+    do {
         val existingValue = NOTIFICATION_ID_COUNTER.get()
         // restriction to compute an id smaller than 2147483647
-        val newValue = (existingValue % 21) + 1
-        if (NOTIFICATION_ID_COUNTER.compareAndSet(existingValue, newValue)) {
-            return "$newValue${getDayAndTimeString()}".toInt()
-        }
-    }
+        newValue = (existingValue % 21) + 1
+    } while (!NOTIFICATION_ID_COUNTER.compareAndSet(existingValue, newValue))
+    return "$newValue${getDayAndTimeString()}".toInt()
 }
 
 fun createNotificationChannel(context: Context, notificationManager: NotificationManager) {

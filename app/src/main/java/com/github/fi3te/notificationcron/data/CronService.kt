@@ -1,6 +1,5 @@
 package com.github.fi3te.notificationcron.data
 
-import com.cronutils.descriptor.CronDescriptor
 import com.cronutils.model.Cron
 import com.cronutils.model.CronType
 import com.cronutils.model.definition.CronDefinitionBuilder
@@ -27,12 +26,6 @@ fun isCronValid(cronString: String): Boolean {
     } catch (e: IllegalArgumentException) {
         false
     }
-}
-
-fun makeCronHumanReadable(cronString: String, locale: Locale): String {
-    val cron = parseCron(cronString)
-    val descriptor = CronDescriptor.instance(locale)
-    return descriptor.describe(cron)
 }
 
 fun computeNextExecution(cron: Cron, now: ZonedDateTime): Optional<ZonedDateTime> {

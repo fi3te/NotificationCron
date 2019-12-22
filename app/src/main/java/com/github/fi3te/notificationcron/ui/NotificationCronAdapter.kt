@@ -32,33 +32,33 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val viewHolder = ViewHolder(notificationCronItem)
         viewHolder.notificationCronOptionsButton.setOnClickListener {
             val notificationCron = data[viewHolder.adapterPosition]
+            PopupMenu(it.context, it, Gravity.END).apply {
+                menu.add(Menu.NONE, 1, Menu.NONE, R.string.test)
+                menu.add(Menu.NONE, 2, Menu.NONE, R.string.edit)
+                menu.add(Menu.NONE, 3, Menu.NONE, R.string.delete)
 
-            val popup = PopupMenu(it.context, it, Gravity.END)
-
-            popup.menu.add(Menu.NONE, 1, Menu.NONE, R.string.test)
-            popup.menu.add(Menu.NONE, 2, Menu.NONE, R.string.edit)
-            popup.menu.add(Menu.NONE, 3, Menu.NONE, R.string.delete)
-
-            popup.setOnMenuItemClickListener { menuItem ->
-                when (menuItem.itemId) {
-                    1 -> buttonListener.testNotificationCron(notificationCron)
-                    2 -> buttonListener.editNotificationCron(notificationCron)
-                    3 -> buttonListener.deleteNotificationCron(notificationCron)
+                setOnMenuItemClickListener { menuItem ->
+                    when (menuItem.itemId) {
+                        1 -> buttonListener.testNotificationCron(notificationCron)
+                        2 -> buttonListener.editNotificationCron(notificationCron)
+                        3 -> buttonListener.deleteNotificationCron(notificationCron)
+                    }
+                    true
                 }
-                true
-            }
-            popup.show()
+            }.show()
         }
         return viewHolder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val notificationCron = data[position]
-        holder.cronText.text = notificationCron.cron
-        holder.notificationTitleText.text = notificationCron.notificationTitle
-        holder.notificationTextText.text = notificationCron.notificationText
-        holder.nextNotificationText.text = notificationCron.nextNotification?.format(DATE_TIME_FORMATTER)
-            ?: holder.itemView.resources.getString(R.string.no_next_notification)
+        holder.apply {
+            cronText.text = notificationCron.cron
+            notificationTitleText.text = notificationCron.notificationTitle
+            notificationTextText.text = notificationCron.notificationText
+            nextNotificationText.text = notificationCron.nextNotification?.format(DATE_TIME_FORMATTER)
+                ?: itemView.resources.getString(R.string.no_next_notification)
+        }
     }
 
     override fun getItemCount() = data.size
