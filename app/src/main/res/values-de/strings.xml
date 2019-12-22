@@ -3,7 +3,7 @@
     <string name="notification_channel_name">Benachrichtigungen</string>
     <string name="notification_channel_description">Benachrichtigungskanal</string>
     <string name="repair_schedule">Zeitplan reparieren</string>
-    <string name="cron_input_hint">Cron-Ausdruck</string>
+    <string name="cron_input_hint">Cron-Ausdruck (Quartz)</string>
     <string name="notification_title_input_hint">Benachrichtigungstitel</string>
     <string name="notification_text_input_hint">Benachrichtigungstext</string>
     <string name="create_scheduled_notifications">Geplante Benachrichtigungen erstellen</string>
