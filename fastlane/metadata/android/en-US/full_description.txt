@@ -1,1 +1,1 @@
-Notification Cron is a straightforward tool to schedule recurring notifications on your phone.
+Notification Cron is a straightforward tool to schedule recurring notifications on your phone without adding calendar entries.

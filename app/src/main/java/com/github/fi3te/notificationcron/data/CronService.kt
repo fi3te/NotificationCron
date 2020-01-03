@@ -16,7 +16,11 @@ fun createQuartzCronParser(): CronParser {
 
 fun parseCron(cronString: String): Cron {
     val cronParser = createQuartzCronParser()
-    return cronParser.parse(cronString).validate()
+    return try {
+        cronParser.parse(cronString).validate()
+    } catch (e: Exception) {
+        throw IllegalArgumentException("Invalid cron expression")
+    }
 }
 
 fun isCronValid(cronString: String): Boolean {
