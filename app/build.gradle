@@ -6,14 +6,25 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+ext {
+    minimumSdkVersion = 26
+    versionMajor = 1
+    versionMinor = 1
+    versionPatch = 0
+}
+
+private Integer generateVersionCode() {
+    return project.ext.minimumSdkVersion * 1000000 + project.ext.versionMajor * 10000 + project.ext.versionMinor * 100 + project.ext.versionPatch
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.github.fi3te.notificationcron"
-        minSdkVersion 26
+        minSdkVersion project.ext.minimumSdkVersion
         targetSdkVersion 28
-        versionCode 3
-        versionName "1.0.2"
+        versionCode generateVersionCode()
+        versionName "${project.ext.versionMajor}.${project.ext.versionMinor}.${project.ext.versionPatch}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         kapt {

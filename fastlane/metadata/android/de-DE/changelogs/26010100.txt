@@ -1,0 +1,2 @@
+* Möglichkeit zur Deaktivierung von Benachrichtigungen hinzugefügt
+* Hilfe-Dialog hinzugefügt
