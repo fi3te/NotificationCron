@@ -17,4 +17,9 @@
         android:title="@string/imprint"
         android:orderInCategory="300"
         app:showAsAction="never"/>
+
+    <item android:id="@+id/help"
+        android:title="@string/help"
+        android:orderInCategory="400"
+        app:showAsAction="never"/>
 </menu>

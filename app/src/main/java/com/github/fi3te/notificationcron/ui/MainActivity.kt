@@ -73,6 +73,10 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
                 showImprintDialog(this)
                 return true
             }
+            R.id.help -> {
+                showHelpDialog(this)
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

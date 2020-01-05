@@ -6,6 +6,8 @@
     <dimen name="recycler_view_last_item_padding">88dp</dimen>
     <dimen name="imprint_dialog_padding">20dp</dimen>
     <dimen name="imprint_dialog_spacing">10dp</dimen>
+    <dimen name="help_dialog_padding">20dp</dimen>
+    <dimen name="help_dialog_spacing">10dp</dimen>
 
     <dimen name="list_item_three_lines_height">88dp</dimen>
     <dimen name="list_item_three_first_line_margin_top">12dp</dimen>
