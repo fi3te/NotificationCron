@@ -81,6 +81,16 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
         showNotification(this, notificationCron)
     }
 
+    override fun enableNotificationCron(notificationCron: NotificationCron) {
+        notificationCron.enabled = true
+        notificationCronViewModel.update(this, notificationCron)
+    }
+
+    override fun disableNotificationCron(notificationCron: NotificationCron) {
+        notificationCron.enabled = false
+        notificationCronViewModel.update(this, notificationCron)
+    }
+
     override fun editNotificationCron(notificationCron: NotificationCron) {
         showUpdateDialog(this, notificationCron) {
             notificationCronViewModel.update(this, it)

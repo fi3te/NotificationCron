@@ -10,19 +10,14 @@ import java.time.ZoneId
 import java.util.*
 
 fun scheduleAlarms(context: Context) {
-    val database = AppDatabase.getDatabase(context)
-    val allNotificationCrons = database.notificationCronDao().findAll()
-
-    val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-    val zoneId = TimeZone.getDefault().toZoneId()
-
-    for (notificationCron in allNotificationCrons) {
-        scheduleAlarm(context, notificationCron, alarmManager, zoneId)
-    }
+    scheduleAlarms(context, true)
 }
 
 fun scheduleNextAlarms(context: Context) {
+    scheduleAlarms(context, false)
+}
+
+private fun scheduleAlarms(context: Context, reschedule: Boolean) {
     val database = AppDatabase.getDatabase(context)
     val notificationCronDao = database.notificationCronDao()
     val allNotificationCrons = notificationCronDao.findAll()
@@ -32,13 +27,18 @@ fun scheduleNextAlarms(context: Context) {
     val zoneId = TimeZone.getDefault().toZoneId()
 
     for (notificationCron in allNotificationCrons) {
-        computeNextExecution(notificationCron)
-        notificationCronDao.update(notificationCron)
-        scheduleAlarm(context, notificationCron, alarmManager, zoneId)
+        if (!notificationCron.enabled) {
+            continue
+        }
+        if (!reschedule) {
+            computeNextExecution(notificationCron)
+            notificationCronDao.update(notificationCron)
+        }
+        scheduleAlarmWithoutEnabledPropertyCheck(context, notificationCron, alarmManager, zoneId)
     }
 }
 
-private fun scheduleAlarm(context: Context, notificationCron: NotificationCron, alarmManager: AlarmManager, zoneId: ZoneId) {
+private fun scheduleAlarmWithoutEnabledPropertyCheck(context: Context, notificationCron: NotificationCron, alarmManager: AlarmManager, zoneId: ZoneId) {
     notificationCron.nextNotification?.let {
         val zonedDateTime = it.atZone(zoneId)
         val triggerAtMillis = zonedDateTime.toInstant().toEpochMilli()
@@ -51,8 +51,11 @@ private fun scheduleAlarm(context: Context, notificationCron: NotificationCron, 
 }
 
 fun scheduleAlarm(context: Context, notificationCron: NotificationCron) {
+    if (!notificationCron.enabled) {
+        return
+    }
     val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-    scheduleAlarm(context, notificationCron, alarmManager, TimeZone.getDefault().toZoneId())
+    scheduleAlarmWithoutEnabledPropertyCheck(context, notificationCron, alarmManager, TimeZone.getDefault().toZoneId())
 }
 
 fun scheduleNextAlarm(context: Context, notificationCronDao: NotificationCronDao, notificationCron: NotificationCron) {

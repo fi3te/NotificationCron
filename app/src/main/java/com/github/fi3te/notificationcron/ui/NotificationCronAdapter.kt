@@ -1,5 +1,6 @@
 package com.github.fi3te.notificationcron.ui
 
+import android.content.res.Resources
 import android.view.*
 import android.widget.ImageButton
 import android.widget.PopupMenu
@@ -22,6 +23,8 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
 
     interface ButtonListener {
         fun testNotificationCron(notificationCron: NotificationCron)
+        fun enableNotificationCron(notificationCron: NotificationCron)
+        fun disableNotificationCron(notificationCron: NotificationCron)
         fun editNotificationCron(notificationCron: NotificationCron)
         fun deleteNotificationCron(notificationCron: NotificationCron)
     }
@@ -34,14 +37,21 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
             val notificationCron = data[viewHolder.adapterPosition]
             PopupMenu(it.context, it, Gravity.END).apply {
                 menu.add(Menu.NONE, 1, Menu.NONE, R.string.test)
-                menu.add(Menu.NONE, 2, Menu.NONE, R.string.edit)
-                menu.add(Menu.NONE, 3, Menu.NONE, R.string.delete)
+                if (!notificationCron.enabled) {
+                    menu.add(Menu.NONE, 2, Menu.NONE, R.string.enable)
+                } else {
+                    menu.add(Menu.NONE, 3, Menu.NONE, R.string.disable)
+                }
+                menu.add(Menu.NONE, 4, Menu.NONE, R.string.edit)
+                menu.add(Menu.NONE, 5, Menu.NONE, R.string.delete)
 
                 setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
                         1 -> buttonListener.testNotificationCron(notificationCron)
-                        2 -> buttonListener.editNotificationCron(notificationCron)
-                        3 -> buttonListener.deleteNotificationCron(notificationCron)
+                        2 -> buttonListener.enableNotificationCron(notificationCron)
+                        3 -> buttonListener.disableNotificationCron(notificationCron)
+                        4 -> buttonListener.editNotificationCron(notificationCron)
+                        5 -> buttonListener.deleteNotificationCron(notificationCron)
                     }
                     true
                 }
@@ -56,8 +66,7 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
             cronText.text = notificationCron.cron
             notificationTitleText.text = notificationCron.notificationTitle
             notificationTextText.text = notificationCron.notificationText
-            nextNotificationText.text = notificationCron.nextNotification?.format(DATE_TIME_FORMATTER)
-                ?: itemView.resources.getString(R.string.no_next_notification)
+            nextNotificationText.text = getNextNotificationText(notificationCron, itemView.resources)
         }
     }
 
@@ -66,5 +75,14 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
     fun setData(data: List<NotificationCron>) {
         this.data = data
         notifyDataSetChanged()
+    }
+
+    private fun getNextNotificationText(notificationCron: NotificationCron, resources: Resources): String {
+        return if (!notificationCron.enabled) {
+            resources.getString(R.string.disabled)
+        } else {
+            notificationCron.nextNotification?.format(DATE_TIME_FORMATTER)
+                ?: resources.getString(R.string.no_next_notification)
+        }
     }
 }
