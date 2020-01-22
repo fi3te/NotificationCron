@@ -12,19 +12,17 @@ ext {
     versionMinor = 1
     versionPatch = 0
 }
-
-private Integer generateVersionCode() {
-    return project.ext.minimumSdkVersion * 1000000 + project.ext.versionMajor * 10000 + project.ext.versionMinor * 100 + project.ext.versionPatch
-}
+println "Use the following versionCode: ${project.ext.minimumSdkVersion * 1000000 + project.ext.versionMajor * 10000 + project.ext.versionMinor * 100 + project.ext.versionPatch}"
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.github.fi3te.notificationcron"
-        minSdkVersion project.ext.minimumSdkVersion
+        minSdkVersion 26
         targetSdkVersion 28
-        versionCode generateVersionCode()
-        versionName "${project.ext.versionMajor}.${project.ext.versionMinor}.${project.ext.versionPatch}"
+        // because of F-Droid it is not possible to use method calls for the versionCode and versionName
+        versionCode 26010100
+        versionName "1.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         kapt {
