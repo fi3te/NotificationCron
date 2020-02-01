@@ -52,10 +52,21 @@ fun createNotificationGroupSummary(context: Context, notificationManager: Notifi
 }
 
 fun createNotification(context: Context, title: String, text: String): Notification {
+    var bigTextStyle = NotificationCompat.BigTextStyle()
+        .setBigContentTitle(title)
+    if (text.isNotBlank()) {
+        bigTextStyle = bigTextStyle.bigText(text)
+    }
+
     val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
         .setSmallIcon(R.drawable.notification_icon)
         .setContentTitle(title)
-        .setContentText(text)
+        .apply {
+            if (text.isNotBlank()) {
+                setContentText(text)
+            }
+        }
+        .setStyle(bigTextStyle)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         .setGroup(NOTIFICATION_GROUP_KEY)
     return builder.build()
