@@ -1,0 +1,3 @@
+* Support for multiline notifications added
+* Display of notifications without text improved
+* Grouping of notifications corrected

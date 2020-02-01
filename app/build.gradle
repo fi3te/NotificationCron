@@ -10,7 +10,7 @@ ext {
     minimumSdkVersion = 26
     versionMajor = 1
     versionMinor = 1
-    versionPatch = 0
+    versionPatch = 1
 }
 
 private Integer generateVersionCode() {
@@ -39,8 +39,8 @@ android {
         minSdkVersion 26
         targetSdkVersion 28
         // because of F-Droid it is not possible to use method calls for the versionCode and versionName
-        versionCode 26010100
-        versionName "1.1.0"
+        versionCode 26010101
+        versionName "1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         checkVersionCodeAndVersionName(versionCode, versionName)

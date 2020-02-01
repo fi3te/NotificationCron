@@ -1,0 +1,3 @@
+* Unterstützung für mehrzeilige Benachrichtigungen hinzugefügt
+* Darstellung von Benachrichtigungen ohne Text verbessert
+* Gruppierung von Benachrichtigungen korrigiert
