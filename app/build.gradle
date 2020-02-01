@@ -12,7 +12,25 @@ ext {
     versionMinor = 1
     versionPatch = 0
 }
-println "Use the following versionCode: ${project.ext.minimumSdkVersion * 1000000 + project.ext.versionMajor * 10000 + project.ext.versionMinor * 100 + project.ext.versionPatch}"
+
+private Integer generateVersionCode() {
+    return project.ext.minimumSdkVersion * 1000000 + project.ext.versionMajor * 10000 + project.ext.versionMinor * 100 + project.ext.versionPatch
+}
+
+private String generateVersionName() {
+    return "${project.ext.versionMajor}.${project.ext.versionMinor}.${project.ext.versionPatch}"
+}
+
+private void checkVersionCodeAndVersionName(Integer versionCode, String versionName) {
+    Integer expectedVersionCode = generateVersionCode()
+    if (versionCode != expectedVersionCode) {
+        throw new GradleException("${versionCode} is not equal to ${expectedVersionCode}!")
+    }
+    String expectedVersionName = generateVersionName()
+    if (versionName != generateVersionName()) {
+        throw new GradleException("${versionName} is not equal to ${expectedVersionName}!")
+    }
+}
 
 android {
     compileSdkVersion 28
@@ -24,6 +42,8 @@ android {
         versionCode 26010100
         versionName "1.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        checkVersionCodeAndVersionName(versionCode, versionName)
 
         kapt {
             arguments {
