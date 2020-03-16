@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Meldingsplanner</string>
+    <string name="notification_channel_name">Meldingen</string>
+    <string name="notification_channel_description">Kanaal</string>
+    <string name="repair_schedule">Reparatieprogramma</string>
+    <string name="cron_input_hint">Cron-expressie (Quartz)</string>
+    <string name="notification_title_input_hint">Naam van melding</string>
+    <string name="notification_text_input_hint">Tekst</string>
+    <string name="create_scheduled_notifications">Meldingen inplannen</string>
+    <string name="edit_scheduled_notifications">Ingeplande meldingen bewerken</string>
+    <string name="delete_scheduled_notifications">Ingeplande meldingen verwijderen</string>
+    <string name="create">Maken</string>
+    <string name="update">Bijwerken</string>
+    <string name="cancel">Annuleren</string>
+    <string name="options">Opties</string>
+    <string name="test">Testen</string>
+    <string name="enable">Inschakelen</string>
+    <string name="disable">Uitschakelen</string>
+    <string name="edit">Aanpassen</string>
+    <string name="delete">Verwijderen</string>
+    <string name="disabled">Uitgeschakeld</string>
+    <string name="no_next_notification">Geen meldingen meer</string>
+    <string name="licenses">Licenties</string>
+    <string name="imprint">Contactinformatie</string>
+    <string name="contact">E-mailadres: fiete.wennier@gmail.com \nTel.nr.: op verzoek</string>
+    <string name="apache_license_hint">Uitgebracht onder de Apache-licentie, versie 2.0 (kopie hieronder)</string>
+    <string name="help">Hulp</string>
+    <string name="format_information">Opmaak: &lt;Seconden&gt; &lt;Minuten&gt; &lt;Uren&gt; &lt;Dag van de maand&gt; &lt;Maand&gt; &lt;Dag van de week&gt; &lt;Jaar (optioneel)&gt;</string>
+    <string name="example_1_expression" translatable="false">0 0 * * * ?</string>
+    <string name="example_1_meaning">Ieder uur</string>
+    <string name="example_2_expression" translatable="false">0 0–15 6 * * ?</string>
+    <string name="example_2_meaning">Iedere minuut, van 6:00 tot 6:15</string>
+    <string name="example_3_expression" translatable="false">0 15 8 L * ?</string>
+    <string name="example_3_meaning">Elke laatste dag van de maand om 8:15</string>
+    <string name="example_4_expression" translatable="false">0 0/5 7 ? * 6#3 2022</string>
+    <string name="example_4_meaning">Elke 5 minuten, van 7:00 tot 7:55, op elke derde vrijdag in het jaar 2022</string>
+</resources>
