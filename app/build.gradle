@@ -10,7 +10,7 @@ ext {
     minimumSdkVersion = 26
     versionMajor = 1
     versionMinor = 1
-    versionPatch = 1
+    versionPatch = 2
 }
 
 private Integer generateVersionCode() {
@@ -39,8 +39,8 @@ android {
         minSdkVersion 26
         targetSdkVersion 28
         // because of F-Droid it is not possible to use method calls for the versionCode and versionName
-        versionCode 26010101
-        versionName "1.1.1"
+        versionCode 26010102
+        versionName "1.1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         checkVersionCodeAndVersionName(versionCode, versionName)
@@ -69,13 +69,13 @@ android {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    implementation 'androidx.room:room-runtime:2.2.3'
-    kapt 'androidx.room:room-compiler:2.2.3'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    kapt 'androidx.room:room-compiler:2.2.5'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.cronutils:cron-utils:9.0.2'
     implementation 'com.afollestad.material-dialogs:core:3.1.0'
     testImplementation 'junit:junit:4.12'

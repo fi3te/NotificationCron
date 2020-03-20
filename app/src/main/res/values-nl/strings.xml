@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Meldingsplanner</string>
     <string name="notification_channel_name">Meldingen</string>
     <string name="notification_channel_description">Kanaal</string>
     <string name="repair_schedule">Reparatieprogramma</string>

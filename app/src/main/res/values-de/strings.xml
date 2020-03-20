@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Notification Cron</string>
     <string name="notification_channel_name">Benachrichtigungen</string>
     <string name="notification_channel_description">Benachrichtigungskanal</string>
     <string name="repair_schedule">Zeitplan reparieren</string>
