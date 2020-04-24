@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.DATE_TIME_FORMATTER
 import com.github.fi3te.notificationcron.data.model.NotificationCron
+import java.util.*
 
-class NotificationCronAdapter(private var data: List<NotificationCron>, private val buttonListener: ButtonListener) :
-    RecyclerView.Adapter<NotificationCronAdapter.ViewHolder>() {
+class NotificationCronAdapter(private var data: List<NotificationCron>, private val viewListener: ViewListener) :
+    RecyclerView.Adapter<NotificationCronAdapter.ViewHolder>(), NotificationCronDragCallback.DragListener {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cronText: TextView = view.findViewById(R.id.cronText)
@@ -21,12 +22,13 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val notificationCronOptionsButton: ImageButton = view.findViewById(R.id.notificationCronOptionsButton)
     }
 
-    interface ButtonListener {
+    interface ViewListener {
         fun testNotificationCron(notificationCron: NotificationCron)
         fun enableNotificationCron(notificationCron: NotificationCron)
         fun disableNotificationCron(notificationCron: NotificationCron)
         fun editNotificationCron(notificationCron: NotificationCron)
         fun deleteNotificationCron(notificationCron: NotificationCron)
+        fun moveNotificationCrons(notificationCrons: List<NotificationCron>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -47,11 +49,11 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
 
                 setOnMenuItemClickListener { menuItem ->
                     when (menuItem.itemId) {
-                        1 -> buttonListener.testNotificationCron(notificationCron)
-                        2 -> buttonListener.enableNotificationCron(notificationCron)
-                        3 -> buttonListener.disableNotificationCron(notificationCron)
-                        4 -> buttonListener.editNotificationCron(notificationCron)
-                        5 -> buttonListener.deleteNotificationCron(notificationCron)
+                        1 -> viewListener.testNotificationCron(notificationCron)
+                        2 -> viewListener.enableNotificationCron(notificationCron)
+                        3 -> viewListener.disableNotificationCron(notificationCron)
+                        4 -> viewListener.editNotificationCron(notificationCron)
+                        5 -> viewListener.deleteNotificationCron(notificationCron)
                     }
                     true
                 }
@@ -84,5 +86,29 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
             notificationCron.nextNotification?.format(DATE_TIME_FORMATTER)
                 ?: resources.getString(R.string.no_next_notification)
         }
+    }
+
+    private fun swapCronPositions(from: Int, to: Int) {
+        val temp = this.data[to].position
+        data[to].position = data[from].position
+        data[from].position = temp
+        Collections.swap(data, from, to)
+    }
+
+    override fun onCronMove(fromPosition: Int, toPosition: Int) {
+        if (fromPosition < toPosition) {
+            for (i in fromPosition..toPosition - 1) {
+                swapCronPositions(i, i + 1)
+            }
+        } else {
+            for (i in fromPosition downTo toPosition + 1) {
+                swapCronPositions(i, i - 1)
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
+    override fun onCronClear() {
+        viewListener.moveNotificationCrons(data)
     }
 }

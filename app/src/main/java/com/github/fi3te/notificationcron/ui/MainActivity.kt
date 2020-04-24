@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.fi3te.notificationcron.R
@@ -16,7 +17,7 @@ import com.github.fi3te.notificationcron.ui.licenses.LicensesActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener {
+class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
 
     private lateinit var notificationCronViewModel: NotificationCronViewModel
     private lateinit var recyclerView: RecyclerView
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
         recyclerView = findViewById(R.id.cronRecyclerView)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = notificationCronAdapter
+        val itemTouchHelper = ItemTouchHelper(NotificationCronDragCallback(notificationCronAdapter))
+        itemTouchHelper.attachToRecyclerView(recyclerView)
         recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
 
         notificationCronViewModel = ViewModelProviders.of(this).get(NotificationCronViewModel::class.java)
@@ -105,5 +108,9 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ButtonListener
         showDeleteDialog(this) {
             notificationCronViewModel.delete(this, notificationCron)
         }
+    }
+
+    override fun moveNotificationCrons(notificationCrons: List<NotificationCron>) {
+        notificationCronViewModel.updateAfterMove(notificationCrons)
     }
 }
