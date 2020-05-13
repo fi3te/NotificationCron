@@ -1,1 +1,1 @@
-* Error handling revised
+* Revised error handling

@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
         itemTouchHelper.attachToRecyclerView(recyclerView)
         recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
 
-        notificationCronViewModel = ViewModelProviders.of(this).get(NotificationCronViewModel::class.java)
+        notificationCronViewModel = ViewModelProvider(this).get(NotificationCronViewModel::class.java)
         notificationCronViewModel.allNotificationCrons.observe(
             this,
             Observer<List<NotificationCron>> { notificationCrons ->
