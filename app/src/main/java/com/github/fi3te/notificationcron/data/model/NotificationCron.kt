@@ -12,5 +12,6 @@ data class NotificationCron(
     @ColumnInfo(name = "notification_title") val notificationTitle: String = "",
     @ColumnInfo(name = "notification_text") val notificationText: String = "",
     @ColumnInfo(name = "next_notification") var nextNotification: LocalDateTime? = null,
-    @ColumnInfo(name = "enabled") var enabled: Boolean = true
+    @ColumnInfo(name = "enabled") var enabled: Boolean = true,
+    @ColumnInfo(name = "position") var position: Long? = null
 )

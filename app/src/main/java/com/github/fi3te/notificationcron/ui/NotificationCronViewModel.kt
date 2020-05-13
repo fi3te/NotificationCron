@@ -29,6 +29,7 @@ class NotificationCronViewModel(application: Application) : AndroidViewModel(app
 
     fun create(context: Context, notificationCron: NotificationCron) = viewModelScope.launch(Dispatchers.IO) {
         computeNextExecution(notificationCron)
+        notificationCron.position = notificationCronDao.getNextPosition()
         val id = notificationCronDao.insert(notificationCron)
         val newNotificationCron = notificationCron.copy(id = id)
         scheduleAlarm(context, newNotificationCron)
@@ -49,5 +50,9 @@ class NotificationCronViewModel(application: Application) : AndroidViewModel(app
 
     fun repairSchedule(context: Context) = viewModelScope.launch(Dispatchers.IO) {
         scheduleNextAlarms(context)
+    }
+
+    fun updateAfterMove(notificationCrons: List<NotificationCron>) = viewModelScope.launch(Dispatchers.IO) {
+        notificationCronDao.update(notificationCrons)
     }
 }
