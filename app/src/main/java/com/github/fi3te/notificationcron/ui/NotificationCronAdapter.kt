@@ -18,6 +18,7 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val cronText: TextView = view.findViewById(R.id.cronText)
         val notificationTitleText: TextView = view.findViewById(R.id.notificationTitleText)
         val notificationTextText: TextView = view.findViewById(R.id.notificationTextText)
+        val onClickURI: TextView = view.findViewById(R.id.onClickURIText)
         val nextNotificationText: TextView = view.findViewById(R.id.nextNotificationText)
         val notificationCronOptionsButton: ImageButton = view.findViewById(R.id.notificationCronOptionsButton)
     }
@@ -68,6 +69,7 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
             cronText.text = notificationCron.cron
             notificationTitleText.text = notificationCron.notificationTitle
             notificationTextText.text = notificationCron.notificationText
+            onClickURI.text = notificationCron.onClickURI
             nextNotificationText.text = getNextNotificationText(notificationCron, itemView.resources)
         }
     }
