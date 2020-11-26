@@ -57,7 +57,7 @@ fun createNotificationGroupSummary(context: Context, notificationManager: Notifi
 }
 
 fun createNotification(context: Context, notificationCron: NotificationCron): Notification {
-    val time = notificationCron.nextNotification?.let { it.format(TIME_FORMATTER) } ?: ""
+    val time = notificationCron.nextNotification?.format(TIME_FORMATTER) ?: ""
     val title = "$time ${notificationCron.notificationTitle}".trim()
     val text =
         if (notificationCron.notificationText.isNotBlank()) notificationCron.notificationText else null
