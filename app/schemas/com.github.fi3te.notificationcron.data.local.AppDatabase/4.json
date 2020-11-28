@@ -33,7 +33,7 @@
             "notNull": true
           },
           {
-            "fieldPath": "onClickURI",
+            "fieldPath": "onClickUri",
             "columnName": "on_click_uri",
             "affinity": "TEXT",
             "notNull": true

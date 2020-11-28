@@ -6,7 +6,7 @@
     <string name="cron_input_hint">Cron expression (Quartz)</string>
     <string name="notification_title_input_hint">Notification title</string>
     <string name="notification_text_input_hint">Notification text</string>
-    <string name="on_click_uri_input_hint">On click open uri</string>
+    <string name="on_click_uri_input_hint">URI (opens on click)</string>
     <string name="create_scheduled_notifications">Create scheduled notifications</string>
     <string name="edit_scheduled_notifications">Edit scheduled notifications</string>
     <string name="delete_scheduled_notifications">Delete scheduled notifications</string>

@@ -61,7 +61,7 @@ fun createNotification(context: Context, notificationCron: NotificationCron): No
     val title = "$time ${notificationCron.notificationTitle}".trim()
     val text =
         if (notificationCron.notificationText.isNotBlank()) notificationCron.notificationText else null
-    val uri = if (notificationCron.onClickURI.isNotBlank()) notificationCron.onClickURI else null
+    val uri = if (notificationCron.onClickUri.isNotBlank()) notificationCron.onClickUri else null
 
     var bigTextStyle = NotificationCompat.BigTextStyle()
         .setBigContentTitle(title)

@@ -21,12 +21,12 @@ fun showCreateDialog(windowContext: Context, create: (notificationCron: Notifica
         addCronInputView(this)
 
         positiveButton(R.string.create) {
-            val (cron, notificationTitle, notificationText, onClickURI) = getInput(this)
+            val (cron, notificationTitle, notificationText, onClickUri) = getInput(this)
             val notificationCron = NotificationCron(
                 cron = cron,
                 notificationTitle = notificationTitle,
                 notificationText = notificationText,
-                onClickURI = onClickURI
+                onClickUri = onClickUri
             )
             create(notificationCron)
         }
@@ -47,12 +47,12 @@ fun showUpdateDialog(
         setInput(this, value)
 
         positiveButton(R.string.update) {
-            val (cron, notificationTitle, notificationText, onClickURI) = getInput(this)
+            val (cron, notificationTitle, notificationText, onClickUri) = getInput(this)
             val updatedNotificationCron = value.copy(
                 cron = cron,
                 notificationTitle = notificationTitle,
                 notificationText = notificationText,
-                onClickURI = onClickURI
+                onClickUri = onClickUri
             )
             update(updatedNotificationCron)
         }
@@ -84,12 +84,12 @@ private fun getInput(dialog: MaterialDialog): NotificationCronInput {
     val cronInput = customView.findViewById<EditText>(R.id.cronInput)
     val notificationTitleInput = customView.findViewById<EditText>(R.id.notificationTitleInput)
     val notificationTextInput = customView.findViewById<EditText>(R.id.notificationTextInput)
-    val notificationOnClickURIInput = customView.findViewById<EditText>(R.id.onClickURIInput)
+    val onClickUriInput = customView.findViewById<EditText>(R.id.onClickUriInput)
     return NotificationCronInput(
         cronInput.text.toString(),
         notificationTitleInput.text.toString(),
         notificationTextInput.text.toString(),
-        notificationOnClickURIInput.text.toString()
+        onClickUriInput.text.toString()
     )
 }
 
@@ -98,7 +98,7 @@ private fun setInput(dialog: MaterialDialog, notificationCron: NotificationCron)
     customView.findViewById<EditText>(R.id.cronInput).setText(notificationCron.cron)
     customView.findViewById<EditText>(R.id.notificationTitleInput).setText(notificationCron.notificationTitle)
     customView.findViewById<EditText>(R.id.notificationTextInput).setText(notificationCron.notificationText)
-    customView.findViewById<EditText>(R.id.onClickURIInput).setText(notificationCron.onClickURI)
+    customView.findViewById<EditText>(R.id.onClickUriInput).setText(notificationCron.onClickUri)
 }
 
 private fun addCronValidation(dialog: MaterialDialog, cronInput: EditText) {
