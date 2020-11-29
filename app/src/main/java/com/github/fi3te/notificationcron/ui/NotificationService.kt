@@ -3,7 +3,11 @@ package com.github.fi3te.notificationcron.ui
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.github.fi3te.notificationcron.R
@@ -46,48 +50,51 @@ fun createNotificationGroupSummary(context: Context, notificationManager: Notifi
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         .setGroup(NOTIFICATION_GROUP_KEY)
         .setStyle(NotificationCompat.InboxStyle())
+        .setAutoCancel(true)
         .setGroupSummary(true)
         .build()
     notificationManager.notify(NOTIFICATION_GROUP_SUMMARY_ID, notificationGroupSummary)
 }
 
-fun createNotification(context: Context, title: String, text: String): Notification {
+fun createNotification(context: Context, notificationCron: NotificationCron): Notification {
+    val time = notificationCron.nextNotification?.format(TIME_FORMATTER) ?: ""
+    val title = "$time ${notificationCron.notificationTitle}".trim()
+    val text =
+        if (notificationCron.notificationText.isNotBlank()) notificationCron.notificationText else null
+    val uri = if (notificationCron.onClickUri.isNotBlank()) notificationCron.onClickUri else null
+
     var bigTextStyle = NotificationCompat.BigTextStyle()
         .setBigContentTitle(title)
-    if (text.isNotBlank()) {
-        bigTextStyle = bigTextStyle.bigText(text)
-    }
+
+    text?.let { bigTextStyle = bigTextStyle.bigText(text) }
 
     val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
         .setSmallIcon(R.drawable.notification_icon)
         .setContentTitle(title)
         .apply {
-            if (text.isNotBlank()) {
-                setContentText(text)
+            text?.let { setContentText(text) }
+        }
+        .apply {
+            uri?.let {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+                val pendingIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
+                setContentIntent(pendingIntent)
             }
         }
         .setStyle(bigTextStyle)
+        .setAutoCancel(true)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         .setGroup(NOTIFICATION_GROUP_KEY)
     return builder.build()
 }
 
-fun showNotification(context: Context, title: String, text: String) {
-    val notification = createNotification(context, title, text)
-    val notificationManager: NotificationManager =
+fun showNotification(context: Context, notificationCron: NotificationCron) {
+    val notification = createNotification(context, notificationCron)
+
+    val notificationManager =
         context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
     createNotificationChannel(context, notificationManager)
     createNotificationGroupSummary(context, notificationManager)
     notificationManager.notify(newNotificationId(), notification)
-}
-
-fun showNotification(context: Context, notificationCron: NotificationCron) {
-    val timePrefix: String = notificationCron.nextNotification?.let {
-        "${it.format(TIME_FORMATTER)} "
-    } ?: ""
-    showNotification(
-        context,
-        timePrefix + notificationCron.notificationTitle,
-        notificationCron.notificationText
-    )
 }

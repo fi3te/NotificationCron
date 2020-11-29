@@ -9,7 +9,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.github.fi3te.notificationcron.data.model.NotificationCron
 
-@Database(entities = [NotificationCron::class], version = 3)
+@Database(entities = [NotificationCron::class], version = 4)
 @TypeConverters(TimeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -32,6 +32,12 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_3_4: Migration = object : Migration(3, 4) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE notification_cron ADD COLUMN on_click_uri TEXT DEFAULT '' NOT NULL")
+            }
+        }
+
         fun getDatabase(context: Context): AppDatabase {
             val tmp = instance
             if (tmp != null) {
@@ -40,7 +46,7 @@ abstract class AppDatabase : RoomDatabase() {
                 synchronized(this) {
                     val newInstance =
                         Room.databaseBuilder(context, AppDatabase::class.java, "notification_cron_database")
-                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
+                            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
                             .build()
                     instance = newInstance
                     return newInstance

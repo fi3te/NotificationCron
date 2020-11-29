@@ -29,4 +29,5 @@
     <string name="example_2_meaning">Iedere minuut, van 6:00 tot 6:15</string>
     <string name="example_3_meaning">Elke laatste dag van de maand om 8:15</string>
     <string name="example_4_meaning">Elke 5 minuten, van 7:00 tot 7:55, op elke derde vrijdag in het jaar 2022</string>
+    <string name="on_click_uri_input_hint">URI (opent op klik)</string>
 </resources>

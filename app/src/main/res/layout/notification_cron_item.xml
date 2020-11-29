@@ -36,9 +36,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/notificationTitleText"
         android:layout_marginTop="@dimen/list_item_three_other_line_margin_top"
-        android:layout_marginBottom="@dimen/list_item_three_last_line_margin_bottom"
         android:layout_toStartOf="@+id/notificationCronOptionsButton"
         android:textAppearance="@style/ListItemSecondaryTextAppearance" />
+
+    <TextView
+        android:id="@+id/onClickUriText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notificationTextText"
+        android:layout_marginTop="@dimen/list_item_three_other_line_margin_top"
+        android:layout_marginBottom="@dimen/list_item_three_last_line_margin_bottom"
+        android:layout_toStartOf="@+id/notificationCronOptionsButton"
+        android:textAppearance="@style/ListItemSecondaryTextAppearance"/>
 
     <TextView
         android:id="@+id/nextNotificationText"
