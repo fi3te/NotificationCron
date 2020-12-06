@@ -5,6 +5,8 @@
     <string name="cron_input_hint">Cron-Ausdruck (Quartz)</string>
     <string name="notification_title_input_hint">Benachrichtigungstitel</string>
     <string name="notification_text_input_hint">Benachrichtigungstext</string>
+    <string name="time_display_input_hint">Zeitanzeige</string>
+    <string name="on_click_uri_input_hint">URI (öffnet sich bei Klick)</string>
     <string name="create_scheduled_notifications">Geplante Benachrichtigungen erstellen</string>
     <string name="edit_scheduled_notifications">Geplante Benachrichtigungen bearbeiten</string>
     <string name="delete_scheduled_notifications">Geplante Benachrichtigungen löschen</string>
@@ -29,5 +31,4 @@
     <string name="example_2_meaning">Im Zeitraum von 6:00 Uhr bis 6:15 Uhr jede Minute</string>
     <string name="example_3_meaning">Um 8:15 Uhr an dem letzten Tag jedes Monats</string>
     <string name="example_4_meaning">Alle 5 Minuten zwischen 7:00 Uhr und 7:55 Uhr an dem dritten Freitag jedes Monats im Jahr 2022</string>
-    <string name="on_click_uri_input_hint">URI (öffnet sich bei Klick)</string>
 </resources>

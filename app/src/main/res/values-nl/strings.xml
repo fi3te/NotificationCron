@@ -5,6 +5,8 @@
     <string name="cron_input_hint">Cron-expressie (Quartz)</string>
     <string name="notification_title_input_hint">Naam van melding</string>
     <string name="notification_text_input_hint">Tekst</string>
+    <string name="time_display_input_hint">Tijdweergave</string>
+    <string name="on_click_uri_input_hint">URI (opent op klik)</string>
     <string name="create_scheduled_notifications">Meldingen inplannen</string>
     <string name="edit_scheduled_notifications">Ingeplande meldingen bewerken</string>
     <string name="delete_scheduled_notifications">Ingeplande meldingen verwijderen</string>
@@ -29,5 +31,4 @@
     <string name="example_2_meaning">Iedere minuut, van 6:00 tot 6:15</string>
     <string name="example_3_meaning">Elke laatste dag van de maand om 8:15</string>
     <string name="example_4_meaning">Elke 5 minuten, van 7:00 tot 7:55, op elke derde vrijdag in het jaar 2022</string>
-    <string name="on_click_uri_input_hint">URI (opent op klik)</string>
 </resources>
