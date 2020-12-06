@@ -3,6 +3,7 @@ package com.github.fi3te.notificationcron.ui
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.CheckBox
 import android.widget.EditText
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.WhichButton
@@ -12,6 +13,7 @@ import com.afollestad.materialdialogs.customview.getCustomView
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.isCronValid
 import com.github.fi3te.notificationcron.data.local.NotificationCronInput
+import com.github.fi3te.notificationcron.data.local.toNotificationCron
 import com.github.fi3te.notificationcron.data.model.NotificationCron
 
 fun showCreateDialog(windowContext: Context, create: (notificationCron: NotificationCron) -> Unit) {
@@ -21,13 +23,7 @@ fun showCreateDialog(windowContext: Context, create: (notificationCron: Notifica
         addCronInputView(this)
 
         positiveButton(R.string.create) {
-            val (cron, notificationTitle, notificationText, onClickUri) = getInput(this)
-            val notificationCron = NotificationCron(
-                cron = cron,
-                notificationTitle = notificationTitle,
-                notificationText = notificationText,
-                onClickUri = onClickUri
-            )
+            val notificationCron = getInput(this).toNotificationCron()
             create(notificationCron)
         }
         negativeButton(R.string.cancel)
@@ -47,12 +43,13 @@ fun showUpdateDialog(
         setInput(this, value)
 
         positiveButton(R.string.update) {
-            val (cron, notificationTitle, notificationText, onClickUri) = getInput(this)
+            val notificationCronInput = getInput(this)
             val updatedNotificationCron = value.copy(
-                cron = cron,
-                notificationTitle = notificationTitle,
-                notificationText = notificationText,
-                onClickUri = onClickUri
+                cron = notificationCronInput.cron,
+                notificationTitle = notificationCronInput.notificationTitle,
+                notificationText = notificationCronInput.notificationText,
+                timeDisplay = notificationCronInput.timeDisplay,
+                onClickUri = notificationCronInput.onClickUri
             )
             update(updatedNotificationCron)
         }
@@ -84,11 +81,13 @@ private fun getInput(dialog: MaterialDialog): NotificationCronInput {
     val cronInput = customView.findViewById<EditText>(R.id.cronInput)
     val notificationTitleInput = customView.findViewById<EditText>(R.id.notificationTitleInput)
     val notificationTextInput = customView.findViewById<EditText>(R.id.notificationTextInput)
+    val timeDisplayInput = customView.findViewById<CheckBox>(R.id.timeDisplayInput)
     val onClickUriInput = customView.findViewById<EditText>(R.id.onClickUriInput)
     return NotificationCronInput(
         cronInput.text.toString(),
         notificationTitleInput.text.toString(),
         notificationTextInput.text.toString(),
+        timeDisplayInput.isChecked,
         onClickUriInput.text.toString()
     )
 }
@@ -98,6 +97,7 @@ private fun setInput(dialog: MaterialDialog, notificationCron: NotificationCron)
     customView.findViewById<EditText>(R.id.cronInput).setText(notificationCron.cron)
     customView.findViewById<EditText>(R.id.notificationTitleInput).setText(notificationCron.notificationTitle)
     customView.findViewById<EditText>(R.id.notificationTextInput).setText(notificationCron.notificationText)
+    customView.findViewById<CheckBox>(R.id.timeDisplayInput).isChecked = notificationCron.timeDisplay
     customView.findViewById<EditText>(R.id.onClickUriInput).setText(notificationCron.onClickUri)
 }
 

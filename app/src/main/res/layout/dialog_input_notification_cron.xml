@@ -33,6 +33,13 @@
         android:importantForAutofill="no"
         android:inputType="text" />
 
+    <CheckBox
+        android:id="@+id/timeDisplayInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/time_display_input_hint" />
+
     <EditText
         android:id="@+id/onClickUriInput"
         android:layout_width="match_parent"
