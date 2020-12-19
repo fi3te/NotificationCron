@@ -2,8 +2,6 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 ext {
@@ -54,6 +52,9 @@ android {
             androidTest.assets.srcDirs +=
                     files("$projectDir/schemas".toString())
         }
+    }
+    buildFeatures {
+        viewBinding true
     }
     buildTypes {
         release {

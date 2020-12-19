@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -13,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.databinding.ActivityMainBinding
 import com.github.fi3te.notificationcron.ui.licenses.LicensesActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
@@ -23,11 +22,13 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var notificationCronAdapter: NotificationCronAdapter
     private lateinit var layoutManager: RecyclerView.LayoutManager
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         layoutManager = LinearLayoutManager(this)
         notificationCronAdapter = NotificationCronAdapter(Collections.emptyList(), this)
@@ -37,16 +38,22 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
         recyclerView.adapter = notificationCronAdapter
         val itemTouchHelper = ItemTouchHelper(NotificationCronDragCallback(notificationCronAdapter))
         itemTouchHelper.attachToRecyclerView(recyclerView)
-        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL))
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                recyclerView.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
-        notificationCronViewModel = ViewModelProvider(this).get(NotificationCronViewModel::class.java)
+        notificationCronViewModel =
+            ViewModelProvider(this).get(NotificationCronViewModel::class.java)
         notificationCronViewModel.allNotificationCrons.observe(
             this,
-            Observer<List<NotificationCron>> { notificationCrons ->
+            { notificationCrons ->
                 notificationCronAdapter.setData(notificationCrons)
             })
 
-        addButton.setOnClickListener {
+        binding.addButton.setOnClickListener {
             showCreateDialog(this) {
                 notificationCronViewModel.create(this, it)
             }

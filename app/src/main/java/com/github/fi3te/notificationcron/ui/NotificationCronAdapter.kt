@@ -99,7 +99,7 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
 
     override fun onCronMove(fromPosition: Int, toPosition: Int) {
         if (fromPosition < toPosition) {
-            for (i in fromPosition..toPosition - 1) {
+            for (i in fromPosition until toPosition) {
                 swapCronPositions(i, i + 1)
             }
         } else {
