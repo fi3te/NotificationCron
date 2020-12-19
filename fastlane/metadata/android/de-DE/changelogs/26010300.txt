@@ -1,0 +1,2 @@
+* Uhrzeit im Benachrichtigungstitel kann ausgeblendet werden
+* Bei Klick auf Benachrichtigung kann URI geöffnet werden

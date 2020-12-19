@@ -1,0 +1,2 @@
+* Time in notification title can be hidden
+* When clicking on the notification an URI can be opened
