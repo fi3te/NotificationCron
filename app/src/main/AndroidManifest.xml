@@ -22,6 +22,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:label="@string/settings" />
+        <activity
             android:name=".ui.licenses.LicensesActivity"
             android:label="@string/licenses" />
 

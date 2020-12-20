@@ -1,0 +1,20 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory app:title="@string/notifications">
+
+        <SwitchPreferenceCompat
+            android:defaultValue="false"
+            app:key="notification_cancellation"
+            app:title="@string/cancel_automatically" />
+
+        <com.github.fi3te.notificationcron.ui.settings.DurationPreference
+            android:defaultValue="10"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:key="display_duration_in_seconds"
+            android:singleLine="true"
+            android:title="@string/display_duration_in_seconds"
+            app:dependency="notification_cancellation"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

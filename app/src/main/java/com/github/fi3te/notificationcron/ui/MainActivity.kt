@@ -14,6 +14,7 @@ import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.model.NotificationCron
 import com.github.fi3te.notificationcron.databinding.ActivityMainBinding
 import com.github.fi3te.notificationcron.ui.licenses.LicensesActivity
+import com.github.fi3te.notificationcron.ui.settings.SettingsActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
@@ -71,6 +72,10 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
+            R.id.settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                return true
+            }
             R.id.repairSchedule -> {
                 notificationCronViewModel.repairSchedule(this)
                 return true
