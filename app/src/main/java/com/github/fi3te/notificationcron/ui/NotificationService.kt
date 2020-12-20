@@ -10,6 +10,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.preference.PreferenceManager
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.TIME_FORMATTER
 import com.github.fi3te.notificationcron.data.getDayAndTimeString
@@ -44,13 +45,39 @@ fun createNotificationChannel(context: Context, notificationManager: Notificatio
     }
 }
 
-fun createNotificationGroupSummary(context: Context, notificationManager: NotificationManager) {
-    val notificationGroupSummary = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-        .setSmallIcon(R.drawable.notification_icon)
+fun getDisplayDurationsInMilliseconds(context: Context): Long? {
+    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+    val notificationCancellation = sharedPreferences.getBoolean("notification_cancellation", false)
+    val displayDurationsInSeconds = sharedPreferences.getString("display_duration_in_seconds", null)
+    if (notificationCancellation) {
+        displayDurationsInSeconds?.let {
+            return try {
+                Integer.parseInt(displayDurationsInSeconds) * 1000L
+            } catch (e: NumberFormatException) {
+                null
+            }
+        }
+    }
+    return null
+}
+
+fun initNotificationBuilder(context: Context, builder: NotificationCompat.Builder) {
+    builder.setSmallIcon(R.drawable.notification_icon)
+        .setAutoCancel(true)
         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
         .setGroup(NOTIFICATION_GROUP_KEY)
+
+    getDisplayDurationsInMilliseconds(context)?.let {
+        builder.setTimeoutAfter(it)
+    }
+}
+
+fun createNotificationGroupSummary(context: Context, notificationManager: NotificationManager) {
+    val notificationGroupSummary = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
+        .apply {
+            initNotificationBuilder(context, this)
+        }
         .setStyle(NotificationCompat.InboxStyle())
-        .setAutoCancel(true)
         .setGroupSummary(true)
         .build()
     notificationManager.notify(NOTIFICATION_GROUP_SUMMARY_ID, notificationGroupSummary)
@@ -70,7 +97,9 @@ fun createNotification(context: Context, notificationCron: NotificationCron): No
     text?.let { bigTextStyle = bigTextStyle.bigText(text) }
 
     val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-        .setSmallIcon(R.drawable.notification_icon)
+        .apply {
+            initNotificationBuilder(context, this)
+        }
         .setContentTitle(title)
         .apply {
             text?.let { setContentText(text) }
@@ -78,24 +107,22 @@ fun createNotification(context: Context, notificationCron: NotificationCron): No
         .apply {
             uri?.let {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
-                val pendingIntent = PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
+                val pendingIntent =
+                    PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
                 setContentIntent(pendingIntent)
             }
         }
         .setStyle(bigTextStyle)
-        .setAutoCancel(true)
-        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-        .setGroup(NOTIFICATION_GROUP_KEY)
     return builder.build()
 }
 
 fun showNotification(context: Context, notificationCron: NotificationCron) {
-    val notification = createNotification(context, notificationCron)
-
     val notificationManager =
         context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
     createNotificationChannel(context, notificationManager)
     createNotificationGroupSummary(context, notificationManager)
+
+    val notification = createNotification(context, notificationCron)
     notificationManager.notify(newNotificationId(), notification)
 }

@@ -1,6 +1,7 @@
 <resources>
     <string name="notification_channel_name">Meldingen</string>
     <string name="notification_channel_description">Kanaal</string>
+    <string name="settings">Instellingen</string>
     <string name="repair_schedule">Reparatieprogramma</string>
     <string name="cron_input_hint">Cron-expressie (Quartz)</string>
     <string name="notification_title_input_hint">Naam van melding</string>
@@ -21,6 +22,10 @@
     <string name="delete">Verwijderen</string>
     <string name="disabled">Uitgeschakeld</string>
     <string name="no_next_notification">Geen meldingen meer</string>
+    <string name="notifications">Meldingen</string>
+    <string name="cancel_automatically">Automatisch verbergen</string>
+    <string name="display_duration_in_seconds">Tijd in seconden weergeven</string>
+    <string name="invalid_duration">Ongeldige duur</string>
     <string name="licenses">Licenties</string>
     <string name="imprint">Contactinformatie</string>
     <string name="contact">E-mailadres: fiete.wennier@gmail.com \nTel.nr.: op verzoek</string>
