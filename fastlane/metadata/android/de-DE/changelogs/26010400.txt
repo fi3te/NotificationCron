@@ -1,0 +1,1 @@
+* Anzeigedauer der Benachrichtigungen kann festgelegt werden
