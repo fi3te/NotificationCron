@@ -31,7 +31,7 @@
     <string name="contact">Email: fiete.wennier@gmail.com \nTel.: sob pedido</string>
     <string name="apache_license_hint">Sob a licença de Apache versão 2.0 (cópia abaixo)</string>
     <string name="help">Ajuda</string>
-    - <string name="format_information">Formato: &lt;Segundos&gt; &lt;Minutos&gt; &lt;Horas&gt; &lt;Dia do mês&gt; &lt;Mês&gt; &lt;Dia da semana&gt; &lt;Ano (opcional)&gt;</string>   
+    <string name="format_information">Formato: &lt;Segundos&gt; &lt;Minutos&gt; &lt;Horas&gt; &lt;Dia do mês&gt; &lt;Mês&gt; &lt;Dia da semana&gt; &lt;Ano (opcional)&gt;</string>   
     <string name="example_1_meaning">A cada hora</string>    
     <string name="example_2_meaning">A cada minuto começando as 6:00 am e terminando as 6:15 am</string>    
     <string name="example_3_meaning">As 8:15 am no último dia de cada mês</string>    
