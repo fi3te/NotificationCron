@@ -28,7 +28,7 @@
     <string name="invalid_duration">Duração inválida</string>
     <string name="licenses">Licenças</string>
     <string name="imprint">Sobre</string>
-    <string name="contact">E-mail: fiete.wennier@gmail.com \nTel.: sob pedido</string>
+    <string name="contact">Email: fiete.wennier@gmail.com \nTel.: sob pedido</string>
     <string name="apache_license_hint">Sob a licença de Apache versão 2.0 (cópia abaixo)</string>
     <string name="help">Ajuda</string>
     - <string name="format_information">Formato: &lt;Segundos&gt; &lt;Minutos&gt; &lt;Horas&gt; &lt;Dia do mês&gt; &lt;Mês&gt; &lt;Dia da semana&gt; &lt;Ano (opcional)&gt;</string>   
