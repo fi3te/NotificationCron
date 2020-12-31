@@ -32,13 +32,13 @@
     <string name="apache_license_hint">在 Apache-2.0 许可下授权 (副本见下方)</string>
     <string name="help">帮助</string>
     <string name="format_information">格式: &lt;秒&gt; &lt;分钟&gt; &lt;小时&gt; &lt;月份中的天&gt; &lt;月份&gt; &lt;一周中的天&gt; &lt;年 (可选)&gt;</string>
-    <string name="example_1_expression" translatable="false">0 0 * * * ?</string>
+    
     <string name="example_1_meaning">每小时</string>
-    <string name="example_2_expression" translatable="false">0 0–15 6 * * ?</string>
+    
     <string name="example_2_meaning">从早上6点到6点15分的每一分钟</string>
-    <string name="example_3_expression" translatable="false">0 15 8 L * ?</string>
+    
     <string name="example_3_meaning">每个月最后一天的上午8时15分</string>
-    <string name="example_4_expression" translatable="false">0 0/5 7 ? * 6#3 2022</string>
+    
     <string name="example_4_meaning">2022年每个月的第三个星期五，从早上7点开始到早上7点55分结束，每5分钟一次</string>
-    <string name="app_name" translatable="false">Notification Cron</string>
+    
 </resources>
