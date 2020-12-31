@@ -22,6 +22,7 @@
     <string name="delete">Löschen</string>
     <string name="disabled">Deaktiviert</string>
     <string name="no_next_notification">Keine nächste Benachrichtigung</string>
+    <string name="add">Hinzufügen</string>
     <string name="notifications">Benachrichtigungen</string>
     <string name="cancel_automatically">Automatisch ausblenden</string>
     <string name="display_duration_in_seconds">Anzeigedauer in Sekunden</string>

@@ -39,7 +39,9 @@
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".data.receiver.AlarmReceiver">
+        <receiver
+            android:name=".data.receiver.AlarmReceiver"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.github.fi3te.notificationcron.ALARM" />
             </intent-filter>

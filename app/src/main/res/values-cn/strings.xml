@@ -22,6 +22,7 @@
     <string name="delete">删除</string>
     <string name="disabled">已禁用</string>
     <string name="no_next_notification">没有下一个通知</string>
+    <string name="add">加</string>
     <string name="notifications">通知</string>
     <string name="cancel_automatically">自动取消</string>
     <string name="display_duration_in_seconds">显示持续时间（秒）</string>
@@ -32,13 +33,8 @@
     <string name="apache_license_hint">在 Apache-2.0 许可下授权 (副本见下方)</string>
     <string name="help">帮助</string>
     <string name="format_information">格式: &lt;秒&gt; &lt;分钟&gt; &lt;小时&gt; &lt;月份中的天&gt; &lt;月份&gt; &lt;一周中的天&gt; &lt;年 (可选)&gt;</string>
-    
     <string name="example_1_meaning">每小时</string>
-    
     <string name="example_2_meaning">从早上6点到6点15分的每一分钟</string>
-    
     <string name="example_3_meaning">每个月最后一天的上午8时15分</string>
-    
     <string name="example_4_meaning">2022年每个月的第三个星期五，从早上7点开始到早上7点55分结束，每5分钟一次</string>
-    
 </resources>
