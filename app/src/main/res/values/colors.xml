@@ -4,10 +4,9 @@
     <color name="colorPrimaryDark">@color/bluish_green_dark</color>
     <color name="colorAccent">@color/blue</color>
 
-    <color name="bluish_green">#009E73</color>
-    <color name="blue">#0072B2</color>
-
     <!-- https://material.io/tools/color/#!/?view.left=0&view.right=0 -->
-    <color name="bluish_green_light">#52d0a2</color>
+    <color name="bluish_green">#009E73</color>
+    <!-- <color name="bluish_green_light">#52d0a2</color> -->
     <color name="bluish_green_dark">#006e47</color>
+    <color name="blue">#0072B2</color>
 </resources>

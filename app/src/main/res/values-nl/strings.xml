@@ -22,6 +22,7 @@
     <string name="delete">Verwijderen</string>
     <string name="disabled">Uitgeschakeld</string>
     <string name="no_next_notification">Geen meldingen meer</string>
+    <string name="add">Toevoegen</string>
     <string name="notifications">Meldingen</string>
     <string name="cancel_automatically">Automatisch verbergen</string>
     <string name="display_duration_in_seconds">Tijd in seconden weergeven</string>
