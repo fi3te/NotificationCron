@@ -1,0 +1,2 @@
+* Added Portuguese translation
+* Added Chinese translation
