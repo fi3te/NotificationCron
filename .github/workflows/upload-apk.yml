@@ -1,0 +1,26 @@
+on:
+  release:
+    types: [created]
+
+jobs:
+  upload_apk:
+    name: Upload APK for release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java environment
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Build a debug APK
+        run: ./gradlew clean assembleDebug
+
+      - name: Upload the APK
+        uses: skx/github-action-publish-binaries@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: 'app/build/outputs/apk/debug/app-debug.apk'
