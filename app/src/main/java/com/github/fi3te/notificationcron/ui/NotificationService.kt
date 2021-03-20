@@ -106,7 +106,7 @@ fun createNotification(context: Context, notificationCron: NotificationCron): No
         }
         .apply {
             uri?.let {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+                val intent = Intent.parseUri(uri, 0)
                 val pendingIntent =
                     PendingIntent.getActivity(context, 0, intent, FLAG_UPDATE_CURRENT)
                 setContentIntent(pendingIntent)
