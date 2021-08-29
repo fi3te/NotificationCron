@@ -15,6 +15,7 @@ import com.github.fi3te.notificationcron.data.model.NotificationCron
 import com.github.fi3te.notificationcron.databinding.ActivityMainBinding
 import com.github.fi3te.notificationcron.ui.licenses.LicensesActivity
 import com.github.fi3te.notificationcron.ui.settings.SettingsActivity
+import com.github.fi3te.notificationcron.ui.settings.loadTheme
 import java.util.*
 
 class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        loadTheme(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
