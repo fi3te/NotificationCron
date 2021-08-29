@@ -3,6 +3,7 @@
     <color name="colorPrimary">@color/bluish_green</color>
     <color name="colorPrimaryDark">@color/bluish_green_dark</color>
     <color name="colorAccent">@color/blue</color>
+    <color name="colorBackground">@android:color/background_light</color>
 
     <!-- https://material.io/tools/color/#!/?view.left=0&view.right=0 -->
     <color name="bluish_green">#009E73</color>
