@@ -20,6 +20,7 @@
     <string name="example_3_meaning">Um 8:15 Uhr an dem letzten Tag jedes Monats</string>
     <string name="example_4_meaning">Alle 5 Minuten zwischen 7:00 Uhr und 7:55 Uhr an dem dritten Freitag jedes Monats im Jahr 2022</string>
     <string name="format_information">Format: &lt;Sekunden&gt; &lt;Minuten&gt; &lt;Stunden&gt; &lt;Tag des Monats&gt; &lt;Monat&gt; &lt;Tag der Woche&gt; &lt;Jahr (optional)&gt;</string>
+    <string name="general">Allgemein</string>
     <string name="help">Hilfe</string>
     <string name="imprint">Impressum</string>
     <string name="invalid_duration">Ungültige Dauer</string>
@@ -35,6 +36,11 @@
     <string name="repair_schedule">Zeitplan reparieren</string>
     <string name="settings">Einstellungen</string>
     <string name="test">Testen</string>
+    <string name="theme">Design</string>
+    <string name="theme_auto_battery">Abhängig vom Energiesparmodus</string>
+    <string name="theme_dark">Dunkel</string>
+    <string name="theme_follow_system">Systemeinstellung</string>
+    <string name="theme_light">Hell</string>
     <string name="time_display_input_hint">Zeitanzeige</string>
     <string name="update">Aktualisieren</string>
 </resources>

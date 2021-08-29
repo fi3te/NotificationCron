@@ -20,6 +20,7 @@
     <string name="example_3_meaning">Elke laatste dag van de maand om 8:15</string>
     <string name="example_4_meaning">Elke 5 minuten, van 7:00 tot 7:55, op elke derde vrijdag in het jaar 2022</string>
     <string name="format_information">Opmaak: &lt;Seconden&gt; &lt;Minuten&gt; &lt;Uren&gt; &lt;Dag van de maand&gt; &lt;Maand&gt; &lt;Dag van de week&gt; &lt;Jaar (optioneel)&gt;</string>
+    <string name="general">Algemeen</string>
     <string name="help">Hulp</string>
     <string name="imprint">Contactinformatie</string>
     <string name="invalid_duration">Ongeldige duur</string>
@@ -35,6 +36,11 @@
     <string name="repair_schedule">Reparatieprogramma</string>
     <string name="settings">Instellingen</string>
     <string name="test">Testen</string>
+    <string name="theme">Ontwerp</string>
+    <string name="theme_auto_battery">Afhankelijk van de batterijbesparende functie</string>
+    <string name="theme_dark">Donker</string>
+    <string name="theme_follow_system">Systeeminstellingen</string>
+    <string name="theme_light">Hell</string>
     <string name="time_display_input_hint">Tijdweergave</string>
     <string name="update">Bijwerken</string>
 </resources>
