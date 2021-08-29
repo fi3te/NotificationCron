@@ -1,45 +1,45 @@
 <resources>
-    <string name="notification_channel_name">Notifications</string>
-    <string name="notification_channel_description">Notification channel</string>
-    <string name="settings">Settings</string>
-    <string name="repair_schedule">Repair schedule</string>
-    <string name="cron_input_hint">Cron expression (Quartz)</string>
-    <string name="notification_title_input_hint">Notification title</string>
-    <string name="notification_text_input_hint">Notification text</string>
-    <string name="time_display_input_hint">Time display</string>
-    <string name="on_click_uri_input_hint">URI (opens on click)</string>
-    <string name="create_scheduled_notifications">Create scheduled notifications</string>
-    <string name="edit_scheduled_notifications">Edit scheduled notifications</string>
-    <string name="delete_scheduled_notifications">Delete scheduled notifications</string>
-    <string name="create">Create</string>
-    <string name="update">Update</string>
-    <string name="cancel">Cancel</string>
-    <string name="options">Options</string>
-    <string name="test">Test</string>
-    <string name="enable">Enable</string>
-    <string name="disable">Disable</string>
-    <string name="edit">Edit</string>
-    <string name="delete">Delete</string>
-    <string name="disabled">Disabled</string>
-    <string name="no_next_notification">No next notification</string>
     <string name="add">Add</string>
-    <string name="notifications">Notifications</string>
-    <string name="cancel_automatically">Cancel automatically</string>
-    <string name="display_duration_in_seconds">Display duration in seconds</string>
-    <string name="invalid_duration">Invalid duration</string>
-    <string name="licenses">Licenses</string>
-    <string name="imprint">Imprint</string>
-    <string name="contact">E-Mail: fiete.wennier@gmail.com \nTel.: on request</string>
     <string name="apache_license_hint">Licensed under the Apache License, Version 2.0 (copy below)</string>
-    <string name="help">Help</string>
-    <string name="format_information">Format: &lt;Seconds&gt; &lt;Minutes&gt; &lt;Hours&gt; &lt;Day of month&gt; &lt;Month&gt; &lt;Day of week&gt; &lt;Year (optional)&gt;</string>
+    <string name="cancel">Cancel</string>
+    <string name="cancel_automatically">Cancel automatically</string>
+    <string name="contact">E-Mail: fiete.wennier@gmail.com \nTel.: on request</string>
+    <string name="create">Create</string>
+    <string name="create_scheduled_notifications">Create scheduled notifications</string>
+    <string name="cron_input_hint">Cron expression (Quartz)</string>
+    <string name="delete">Delete</string>
+    <string name="delete_scheduled_notifications">Delete scheduled notifications</string>
+    <string name="disable">Disable</string>
+    <string name="disabled">Disabled</string>
+    <string name="display_duration_in_seconds">Display duration in seconds</string>
+    <string name="edit">Edit</string>
+    <string name="edit_scheduled_notifications">Edit scheduled notifications</string>
+    <string name="enable">Enable</string>
     <string name="example_1_meaning">Every hour</string>
     <string name="example_2_meaning">Every minute starting at 6:00 am and ending at 6:15 am</string>
     <string name="example_3_meaning">At 8:15 am on the last day of every month</string>
     <string name="example_4_meaning">Every 5 minutes starting at 7:00 am and ending at 7:55 am on the third friday of every month during the year 2022</string>
+    <string name="format_information">Format: &lt;Seconds&gt; &lt;Minutes&gt; &lt;Hours&gt; &lt;Day of month&gt; &lt;Month&gt; &lt;Day of week&gt; &lt;Year (optional)&gt;</string>
+    <string name="help">Help</string>
+    <string name="imprint">Imprint</string>
+    <string name="invalid_duration">Invalid duration</string>
+    <string name="licenses">Licenses</string>
+    <string name="no_next_notification">No next notification</string>
+    <string name="notification_channel_description">Notification channel</string>
+    <string name="notification_channel_name">Notifications</string>
+    <string name="notification_text_input_hint">Notification text</string>
+    <string name="notification_title_input_hint">Notification title</string>
+    <string name="notifications">Notifications</string>
+    <string name="on_click_uri_input_hint">URI (opens on click)</string>
+    <string name="options">Options</string>
+    <string name="repair_schedule">Repair schedule</string>
+    <string name="settings">Settings</string>
+    <string name="test">Test</string>
+    <string name="time_display_input_hint">Time display</string>
+    <string name="update">Update</string>
+    <string name="app_name" translatable="false">Notification Cron</string>
     <string name="example_1_expression" translatable="false">0 0 * * * ?</string>
     <string name="example_2_expression" translatable="false">0 0–15 6 * * ?</string>
     <string name="example_3_expression" translatable="false">0 15 8 L * ?</string>
     <string name="example_4_expression" translatable="false">0 0/5 7 ? * 6#3 2022</string>
-    <string name="app_name" translatable="false">Notification Cron</string>
 </resources>
