@@ -5,6 +5,7 @@ import android.view.*
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.TextView
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.recyclerview.widget.RecyclerView
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.DATE_TIME_FORMATTER
@@ -38,7 +39,8 @@ class NotificationCronAdapter(private var data: List<NotificationCron>, private 
         val viewHolder = ViewHolder(notificationCronItem)
         viewHolder.notificationCronOptionsButton.setOnClickListener {
             val notificationCron = data[viewHolder.adapterPosition]
-            PopupMenu(it.context, it, Gravity.END).apply {
+            val contextThemeWrapper = ContextThemeWrapper(it.context, R.style.AppTheme_PopupOverlay)
+            PopupMenu(contextThemeWrapper, it, Gravity.END).apply {
                 menu.add(Menu.NONE, 1, Menu.NONE, R.string.test)
                 if (!notificationCron.enabled) {
                     menu.add(Menu.NONE, 2, Menu.NONE, R.string.enable)
