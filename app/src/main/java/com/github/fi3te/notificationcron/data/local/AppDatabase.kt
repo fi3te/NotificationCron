@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.db.NotificationCron
 
 @Database(entities = [NotificationCron::class], version = 5)
 @TypeConverters(TimeConverter::class)

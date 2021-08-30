@@ -12,9 +12,9 @@ import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.isCronValid
-import com.github.fi3te.notificationcron.data.local.NotificationCronInput
-import com.github.fi3te.notificationcron.data.local.toNotificationCron
-import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.db.NotificationCron
+import com.github.fi3te.notificationcron.data.model.NotificationCronInput
+import com.github.fi3te.notificationcron.data.model.toNotificationCron
 
 fun showCreateDialog(windowContext: Context, create: (notificationCron: NotificationCron) -> Unit) {
     MaterialDialog(windowContext).show {

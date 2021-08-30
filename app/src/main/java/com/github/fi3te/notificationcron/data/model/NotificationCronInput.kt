@@ -1,6 +1,6 @@
-package com.github.fi3te.notificationcron.data.local
+package com.github.fi3te.notificationcron.data.model
 
-import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.db.NotificationCron
 
 data class NotificationCronInput(
     val cron: String,

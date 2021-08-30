@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.fi3te.notificationcron.data.computeNextExecution
 import com.github.fi3te.notificationcron.data.local.AppDatabase
 import com.github.fi3te.notificationcron.data.local.NotificationCronDao
-import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.db.NotificationCron
 import com.github.fi3te.notificationcron.data.removeAlarm
 import com.github.fi3te.notificationcron.data.scheduleAlarm
 import com.github.fi3te.notificationcron.data.scheduleNextAlarms
