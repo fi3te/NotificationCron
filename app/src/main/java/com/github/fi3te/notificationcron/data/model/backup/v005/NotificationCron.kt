@@ -1,8 +1,8 @@
-package com.github.fi3te.notificationcron.data.model.backup.v5
+package com.github.fi3te.notificationcron.data.model.backup.v005
 
 import java.time.LocalDateTime
 
-data class NotificationCronV5(
+data class NotificationCron(
     val cron: String,
     val notificationTitle: String,
     val notificationText: String,
