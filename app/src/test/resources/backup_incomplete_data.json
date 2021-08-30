@@ -1,0 +1,17 @@
+{
+  "version": "5",
+  "notificationCrons": [
+    {
+      "cron": "0 0 7-22 * * ?",
+      "notificationTitle": "title",
+      "timeDisplay": true,
+      "onClickUri": "",
+      "nextNotification": "2022-01-01T00:00",
+      "enabled": true
+    }
+  ],
+  "settings": {
+    "theme": 1,
+    "displayDurationInSeconds": 5
+  }
+}
