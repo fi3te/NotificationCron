@@ -43,9 +43,4 @@
     <string name="theme_light">浅色</string>
     <string name="time_display_input_hint">时间显示</string>
     <string name="update">更新</string>
-    <string name="app_name" translatable="false">Notification Cron</string>
-    <string name="example_1_expression" translatable="false">0 0 * * * ?</string>
-    <string name="example_2_expression" translatable="false">0 0–15 6 * * ?</string>
-    <string name="example_3_expression" translatable="false">0 15 8 L * ?</string>
-    <string name="example_4_expression" translatable="false">0 0/5 7 ? * 6#3 2022</string>
 </resources>
