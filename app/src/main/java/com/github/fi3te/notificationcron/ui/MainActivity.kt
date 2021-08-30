@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.fi3te.notificationcron.R
-import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.db.NotificationCron
 import com.github.fi3te.notificationcron.databinding.ActivityMainBinding
 import com.github.fi3te.notificationcron.ui.licenses.LicensesActivity
 import com.github.fi3te.notificationcron.ui.settings.SettingsActivity

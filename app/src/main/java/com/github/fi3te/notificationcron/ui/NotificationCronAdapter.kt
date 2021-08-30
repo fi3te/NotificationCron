@@ -9,7 +9,7 @@ import androidx.appcompat.view.ContextThemeWrapper
 import androidx.recyclerview.widget.RecyclerView
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.DATE_TIME_FORMATTER
-import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.db.NotificationCron
 import java.util.*
 
 class NotificationCronAdapter(private var data: List<NotificationCron>, private val viewListener: ViewListener) :

@@ -7,14 +7,13 @@ import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.preference.PreferenceManager
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.TIME_FORMATTER
 import com.github.fi3te.notificationcron.data.getDayAndTimeString
-import com.github.fi3te.notificationcron.data.model.NotificationCron
+import com.github.fi3te.notificationcron.data.model.db.NotificationCron
 import java.util.concurrent.atomic.AtomicInteger
 
 
