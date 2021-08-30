@@ -73,6 +73,13 @@
             android:textSize="@dimen/software_licenses_activity_library_text_size"
             android:textStyle="bold" />
 
+        <!--suppress AndroidLintHardcodedText -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/software_licenses_activity_padding"
+            android:text="Joze Martin Rozanec" />
+
         <include layout="@layout/template_license_apache_hint" />
 
         <include layout="@layout/template_license_separator" />
@@ -86,6 +93,33 @@
             android:textSize="@dimen/software_licenses_activity_library_text_size"
             android:textStyle="bold" />
 
+        <!--suppress AndroidLintHardcodedText -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/software_licenses_activity_padding"
+            android:text="Aidan Follestad" />
+
+        <include layout="@layout/template_license_apache_hint" />
+
+        <include layout="@layout/template_license_separator" />
+
+        <!--suppress AndroidLintHardcodedText -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/software_licenses_activity_padding"
+            android:text="square/moshi"
+            android:textSize="@dimen/software_licenses_activity_library_text_size"
+            android:textStyle="bold" />
+
+        <!--suppress AndroidLintHardcodedText -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/software_licenses_activity_padding"
+            android:text="Square, Inc." />
+
         <include layout="@layout/template_license_apache_hint" />
 
         <include layout="@layout/template_license_separator" />
@@ -97,7 +131,6 @@
             android:layout_marginHorizontal="@dimen/software_licenses_activity_padding"
             android:textSize="11sp"
             tools:ignore="SmallSp" />
-
 
     </LinearLayout>
 </ScrollView>
