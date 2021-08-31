@@ -33,14 +33,14 @@
     <string name="notifications">Notificações</string>
     <string name="on_click_uri_input_hint">URI (abre ao clicar)</string>
     <string name="options">Opções</string>
-    <string name="repair_schedule">Reparar o cronograma</string>
+    <string name="repair_schedule">Arranjar o cronograma</string>
     <string name="settings">Configurações</string>
     <string name="test">Teste</string>
-    <string name="theme">Projeto</string>
-    <string name="theme_auto_battery">Dependendo do recurso de economia de bateria</string>
+    <string name="theme">Tema</string>
+    <string name="theme_auto_battery">Baseado no modo de economia da bateria</string>
     <string name="theme_dark">Escuro</string>
-    <string name="theme_follow_system">Seguir sistema</string>
-    <string name="theme_light">Light</string>
+    <string name="theme_follow_system">Adaptar do sistema</string>
+    <string name="theme_light">Claro</string>
     <string name="time_display_input_hint">Indicador de tempo</string>
     <string name="update">Atualizar</string>
 </resources>
