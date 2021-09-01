@@ -13,6 +13,7 @@ import com.github.fi3te.notificationcron.data.model.db.Database
 import com.github.fi3te.notificationcron.data.remote.BackupJsonService
 import com.github.fi3te.notificationcron.data.remote.copyFile
 import com.github.fi3te.notificationcron.data.remote.map
+import com.github.fi3te.notificationcron.data.scheduleNextAlarms
 import com.squareup.moshi.JsonDataException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -84,6 +85,7 @@ class BackupViewModel(application: Application) : AndroidViewModel(application) 
                     settingsDao.writeSettings(database.settings)
                     notificationCronDao.deleteAll()
                     notificationCronDao.insertAll(database.notificationCrons)
+                    scheduleNextAlarms(getApplication())
                 }
             }
 

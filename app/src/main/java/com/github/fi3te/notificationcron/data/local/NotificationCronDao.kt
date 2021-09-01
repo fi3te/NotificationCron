@@ -14,7 +14,7 @@ interface NotificationCronDao {
     fun findAllOrderedAndLive(): LiveData<List<NotificationCron>>
 
     @Query("SELECT * FROM notification_cron WHERE id=:notificationCronId")
-    fun findById(notificationCronId: Long): NotificationCron
+    fun findById(notificationCronId: Long): NotificationCron?
 
     @Query("SELECT IFNULL(MAX(position) + 1, 0) FROM notification_cron")
     fun getNextPosition(): Long
