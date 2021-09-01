@@ -18,8 +18,10 @@ class AlarmReceiver : BroadcastReceiver() {
                 val notificationCronDao = database.notificationCronDao()
                 Thread(Runnable {
                     val notificationCron = notificationCronDao.findById(notificationCronId)
-                    showNotification(context, notificationCron)
-                    scheduleNextAlarm(context, notificationCronDao, notificationCron)
+                    notificationCron?.let {
+                        showNotification(context, notificationCron)
+                        scheduleNextAlarm(context, notificationCronDao, notificationCron)
+                    }
                 }).start()
             }
         }
