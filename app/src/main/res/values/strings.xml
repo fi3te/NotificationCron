@@ -1,11 +1,15 @@
 <resources>
     <string name="add">Add</string>
     <string name="apache_license_hint">Licensed under the Apache License, Version 2.0 (copy below)</string>
+    <string name="backup">Backup</string>
     <string name="cancel">Cancel</string>
     <string name="cancel_automatically">Cancel automatically</string>
     <string name="contact">E-Mail: fiete.wennier@gmail.com \nTel.: on request</string>
     <string name="create">Create</string>
+    <string name="create_backup">Create backup</string>
     <string name="create_scheduled_notifications">Create scheduled notifications</string>
+    <string name="created_backup_successfully">Created backup successfully</string>
+    <string name="created_backup_unsuccessfully">Created backup unsuccessfully</string>
     <string name="cron_input_hint">Cron expression (Quartz)</string>
     <string name="delete">Delete</string>
     <string name="delete_scheduled_notifications">Delete scheduled notifications</string>
@@ -34,6 +38,9 @@
     <string name="on_click_uri_input_hint">URI (opens on click)</string>
     <string name="options">Options</string>
     <string name="repair_schedule">Repair schedule</string>
+    <string name="restore_backup">Restore backup</string>
+    <string name="restored_backup_successfully">Restored backup successfully</string>
+    <string name="restored_backup_unsuccessfully">Restored backup unsuccessfully</string>
     <string name="settings">Settings</string>
     <string name="test">Test</string>
     <string name="theme">Theme</string>

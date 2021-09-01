@@ -7,6 +7,10 @@ import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.CallSuper
 
+const val JSON_TYPE = "application/json"
+
+fun jsonReadFile(): ReadFile = ReadFile(JSON_TYPE)
+
 data class ReadFile(
     val mimeType: String?
 )
@@ -30,6 +34,8 @@ class ReadFileContract : ActivityResultContract<ReadFile, Uri?>() {
         return if (intent == null || resultCode != Activity.RESULT_OK) null else intent.data
     }
 }
+
+fun jsonCreateFile(defaultFilename: String?): CreateFile = CreateFile(defaultFilename, JSON_TYPE)
 
 data class CreateFile(
     val defaultFilename: String?,

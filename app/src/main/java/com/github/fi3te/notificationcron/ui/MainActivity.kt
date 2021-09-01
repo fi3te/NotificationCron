@@ -15,7 +15,6 @@ import com.github.fi3te.notificationcron.data.model.db.NotificationCron
 import com.github.fi3te.notificationcron.databinding.ActivityMainBinding
 import com.github.fi3te.notificationcron.ui.licenses.LicensesActivity
 import com.github.fi3te.notificationcron.ui.settings.SettingsActivity
-import com.github.fi3te.notificationcron.ui.settings.loadTheme
 import java.util.*
 
 class MainActivity : AppCompatActivity(), NotificationCronAdapter.ViewListener {

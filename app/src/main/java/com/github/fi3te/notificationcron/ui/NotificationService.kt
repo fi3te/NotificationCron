@@ -9,10 +9,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import androidx.preference.PreferenceManager
 import com.github.fi3te.notificationcron.R
 import com.github.fi3te.notificationcron.data.TIME_FORMATTER
 import com.github.fi3te.notificationcron.data.getDayAndTimeString
+import com.github.fi3te.notificationcron.data.local.SettingsDao
 import com.github.fi3te.notificationcron.data.model.db.NotificationCron
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -45,19 +45,12 @@ fun createNotificationChannel(context: Context, notificationManager: Notificatio
 }
 
 fun getDisplayDurationsInMilliseconds(context: Context): Long? {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-    val notificationCancellation = sharedPreferences.getBoolean("notification_cancellation", false)
-    val displayDurationsInSeconds = sharedPreferences.getString("display_duration_in_seconds", null)
-    if (notificationCancellation) {
-        displayDurationsInSeconds?.let {
-            return try {
-                Integer.parseInt(displayDurationsInSeconds) * 1000L
-            } catch (e: NumberFormatException) {
-                null
-            }
-        }
+    val settings = SettingsDao(context).readSettings()
+    return if (settings.notificationCancellation) {
+        settings.displayDurationInSeconds * 1000L
+    } else {
+        null
     }
-    return null
 }
 
 fun initNotificationBuilder(context: Context, builder: NotificationCompat.Builder) {

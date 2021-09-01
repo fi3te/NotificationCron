@@ -1,11 +1,15 @@
 <resources>
     <string name="add">添加</string>
     <string name="apache_license_hint">在 Apache-2.0 许可下授权 (副本见下方)</string>
+    <string name="backup">备份</string>
     <string name="cancel">取消</string>
     <string name="cancel_automatically">自动取消</string>
     <string name="contact">电子邮件地址: fiete.wennier@gmail.com \n电话: 若有需求，请私下联系取得号码</string>
     <string name="create">新建</string>
+    <string name="create_backup">创建备份</string>
     <string name="create_scheduled_notifications">创建定期通知</string>
+    <string name="created_backup_successfully">备份创建成功</string>
+    <string name="created_backup_unsuccessfully">创建备份失败</string>
     <string name="cron_input_hint">Cron 表达式(Quartz)</string>
     <string name="delete">删除</string>
     <string name="delete_scheduled_notifications">删除定期通知</string>
@@ -34,6 +38,9 @@
     <string name="on_click_uri_input_hint">URI (单击打开)</string>
     <string name="options">选项</string>
     <string name="repair_schedule">检修计划</string>
+    <string name="restore_backup">恢复备份</string>
+    <string name="restored_backup_successfully">备份恢复成功</string>
+    <string name="restored_backup_unsuccessfully">无法恢复备份</string>
     <string name="settings">设置</string>
     <string name="test">测试</string>
     <string name="theme">主題</string>

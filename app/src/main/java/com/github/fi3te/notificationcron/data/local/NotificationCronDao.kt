@@ -25,6 +25,9 @@ interface NotificationCronDao {
     @Insert
     fun insert(notificationCron: NotificationCron): Long
 
+    @Insert
+    fun insertAll(notificationCrons: List<NotificationCron>)
+
     @Update
     fun update(notificationCron: NotificationCron)
 
@@ -33,4 +36,7 @@ interface NotificationCronDao {
 
     @Delete
     fun delete(notificationCron: NotificationCron)
+
+    @Query("DELETE FROM notification_cron")
+    fun deleteAll()
 }
