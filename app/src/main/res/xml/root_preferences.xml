@@ -27,4 +27,16 @@
             app:dependency="notification_cancellation"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
+    <PreferenceCategory app:title="@string/backup">
+
+        <Preference
+            android:key="create_backup"
+            android:persistent="false"
+            android:title="@string/create_backup" />
+
+        <Preference
+            android:key="restore_backup"
+            android:persistent="false"
+            android:title="@string/restore_backup" />
+    </PreferenceCategory>
 </PreferenceScreen>

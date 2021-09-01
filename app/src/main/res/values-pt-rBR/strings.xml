@@ -1,11 +1,15 @@
 <resources>
     <string name="add">Adicionar</string>
     <string name="apache_license_hint">Sob a licença de Apache versão 2.0 (cópia abaixo)</string>
+    <string name="backup">Backup</string>
     <string name="cancel">Cancelar</string>
     <string name="cancel_automatically">Cancelar automaticamente</string>
     <string name="contact">Email: fiete.wennier@gmail.com \nTel.: sob pedido</string>
     <string name="create">Criar</string>
+    <string name="create_backup">Criar backup</string>
     <string name="create_scheduled_notifications">Criar as notificações programadas</string>
+    <string name="created_backup_successfully">Backup criado com sucesso</string>
+    <string name="created_backup_unsuccessfully">Falha ao criar o backup</string>
     <string name="cron_input_hint">Expressão de Cron (Quartzo)</string>
     <string name="delete">Excluir</string>
     <string name="delete_scheduled_notifications">Excluir as notificações programadas</string>
@@ -34,6 +38,9 @@
     <string name="on_click_uri_input_hint">URI (abre ao clicar)</string>
     <string name="options">Opções</string>
     <string name="repair_schedule">Arranjar o cronograma</string>
+    <string name="restore_backup">Restaurar backup</string>
+    <string name="restored_backup_successfully">Backup restaurado com sucesso</string>.
+    <string name="restored_backup_unsuccessfully">Falha ao restaurar o backup</string>
     <string name="settings">Configurações</string>
     <string name="test">Teste</string>
     <string name="theme">Tema</string>

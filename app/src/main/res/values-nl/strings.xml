@@ -1,11 +1,15 @@
 <resources>
     <string name="add">Toevoegen</string>
     <string name="apache_license_hint">Uitgebracht onder de Apache-licentie, versie 2.0 (kopie hieronder)</string>
+    <string name="backup">Back-up</string>
     <string name="cancel">Annuleren</string>
     <string name="cancel_automatically">Automatisch verbergen</string>
     <string name="contact">E-mailadres: fiete.wennier@gmail.com \nTel.nr.: op verzoek</string>
     <string name="create">Maken</string>
+    <string name="create_backup">Een back-up maken</string>
     <string name="create_scheduled_notifications">Meldingen inplannen</string>
+    <string name="created_backup_successfully">Back-up succesvol gemaakt</string>
+    <string name="created_backup_unsuccessfully">Kan de back-up niet maken</string>
     <string name="cron_input_hint">Cron-expressie (Quartz)</string>
     <string name="delete">Verwijderen</string>
     <string name="delete_scheduled_notifications">Ingeplande meldingen verwijderen</string>
@@ -34,6 +38,9 @@
     <string name="on_click_uri_input_hint">URI (opent op klik)</string>
     <string name="options">Opties</string>
     <string name="repair_schedule">Reparatieprogramma</string>
+    <string name="restore_backup">Back-up terugzetten</string>
+    <string name="restored_backup_successfully">Back-up met succes hersteld</string>.
+    <string name="restored_backup_unsuccessfully">Back-up terugzetten mislukt</string>
     <string name="settings">Instellingen</string>
     <string name="test">Testen</string>
     <string name="theme">Ontwerp</string>

@@ -1,17 +1,25 @@
 package com.github.fi3te.notificationcron.ui.settings
 
-import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
 import com.github.fi3te.notificationcron.R
+import com.github.fi3te.notificationcron.data.remote.*
+import com.github.fi3te.notificationcron.ui.BackupViewModel
+import com.github.fi3te.notificationcron.ui.reloadTheme
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 
 class SettingsActivity : AppCompatActivity() {
+
+    private lateinit var backupViewModel: BackupViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +31,8 @@ class SettingsActivity : AppCompatActivity() {
                 .commit()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        backupViewModel =
+            ViewModelProvider(this).get(BackupViewModel::class.java)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -35,7 +45,56 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+    override fun onBackPressed() {
+        if (!backupViewModel.backupRunning) {
+            super.onBackPressed()
+        }
+    }
+
+    class SettingsFragment : PreferenceFragmentCompat(),
+        SharedPreferences.OnSharedPreferenceChangeListener, Preference.OnPreferenceClickListener {
+
+        private lateinit var backupViewModel: BackupViewModel
+        private lateinit var createBackupLauncher: ActivityResultLauncher<CreateFile>
+        private lateinit var restoreBackupLauncher: ActivityResultLauncher<ReadFile>
+
+        companion object {
+            private const val CREATE_BACKUP = "create_backup"
+            private const val RESTORE_BACKUP = "restore_backup"
+        }
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+
+            val createBackup = preferenceManager.findPreference<Preference>(CREATE_BACKUP)
+            createBackup?.onPreferenceClickListener = this
+
+            val restoreBackup = preferenceManager.findPreference<Preference>(RESTORE_BACKUP)
+            restoreBackup?.onPreferenceClickListener = this
+
+            backupViewModel =
+                ViewModelProvider(requireActivity()).get(BackupViewModel::class.java)
+            createBackupLauncher = registerForActivityResult(CreateFileContract()) {
+                it?.let {
+                    backupViewModel.createBackup(it).observe(viewLifecycleOwner, { successful ->
+                        val textRes =
+                            if (successful) R.string.created_backup_successfully else R.string.restored_backup_unsuccessfully
+                        Toast.makeText(context, textRes, Toast.LENGTH_SHORT).show()
+                    })
+                }
+            }
+            restoreBackupLauncher = registerForActivityResult(ReadFileContract()) {
+                it?.let {
+                    backupViewModel.restoreBackup(it).observe(viewLifecycleOwner, { successful ->
+                        val textRes =
+                            if (successful) R.string.restored_backup_successfully else R.string.restored_backup_unsuccessfully
+                        activity?.let { reloadTheme(it) }
+                        Toast.makeText(context, textRes, Toast.LENGTH_SHORT).show()
+                    })
+                }
+            }
+        }
+
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
         }
@@ -54,18 +113,28 @@ class SettingsActivity : AppCompatActivity() {
             sharedPreferences: SharedPreferences?,
             key: String?
         ) {
-            context?.let {
-                if (key.equals("theme")) {
-                    loadTheme(it)
-                    activity?.recreate()
+            activity?.let {
+                if (key.equals("theme") && !backupViewModel.backupRunning) {
+                    reloadTheme(requireActivity())
                 }
             }
         }
-    }
-}
 
-fun loadTheme(context: Context) {
-    val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-    val theme = Integer.parseInt(sharedPreferences.getString("theme", "-1")!!)
-    AppCompatDelegate.setDefaultNightMode(theme)
+        override fun onPreferenceClick(preference: Preference?): Boolean {
+            if (activity != null && !backupViewModel.backupRunning) {
+                when (preference?.key) {
+                    CREATE_BACKUP -> {
+                        val dateString =
+                            LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
+                        val defaultFileName = "Backup_$dateString.json"
+                        createBackupLauncher.launch(jsonCreateFile(defaultFileName))
+                    }
+                    RESTORE_BACKUP -> {
+                        restoreBackupLauncher.launch(jsonReadFile())
+                    }
+                }
+            }
+            return true
+        }
+    }
 }

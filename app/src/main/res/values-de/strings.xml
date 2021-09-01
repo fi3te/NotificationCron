@@ -1,11 +1,15 @@
 <resources>
     <string name="add">Hinzufügen</string>
     <string name="apache_license_hint">Lizenziert unter der Apache-Lizenz, Version 2.0 (Kopie unten)</string>
+    <string name="backup">Backup</string>
     <string name="cancel">Abbrechen</string>
     <string name="cancel_automatically">Automatisch ausblenden</string>
     <string name="contact">E-Mail: fiete.wennier@gmail.com \nTel.: auf Anfrage</string>
     <string name="create">Erstellen</string>
+    <string name="create_backup">Backup erstellen</string>
     <string name="create_scheduled_notifications">Geplante Benachrichtigungen erstellen</string>
+    <string name="created_backup_successfully">Backup erfolgreich erstellt</string>
+    <string name="created_backup_unsuccessfully">Erstellung des Backup fehlgeschlagen</string>
     <string name="cron_input_hint">Cron-Ausdruck (Quartz)</string>
     <string name="delete">Löschen</string>
     <string name="delete_scheduled_notifications">Geplante Benachrichtigungen löschen</string>
@@ -34,6 +38,9 @@
     <string name="on_click_uri_input_hint">URI (öffnet sich bei Klick)</string>
     <string name="options">Optionen</string>
     <string name="repair_schedule">Zeitplan reparieren</string>
+    <string name="restore_backup">Backup wiederherstellen</string>
+    <string name="restored_backup_successfully">Backup erfolgreich wiederhergestellt</string>
+    <string name="restored_backup_unsuccessfully">Wiederherstellung des Backups fehlgeschlagen</string>
     <string name="settings">Einstellungen</string>
     <string name="test">Testen</string>
     <string name="theme">Design</string>
