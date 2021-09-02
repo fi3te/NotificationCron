@@ -1,8 +1,8 @@
 package com.github.fi3te.notificationcron.data.remote
 
-import com.github.fi3te.notificationcron.data.model.backup.BackupV005
-import com.github.fi3te.notificationcron.data.model.backup.v005.NotificationCron
-import com.github.fi3te.notificationcron.data.model.backup.v005.Settings
+import com.github.fi3te.notificationcron.data.model.backup.BackupV00500
+import com.github.fi3te.notificationcron.data.model.backup.v00500.NotificationCron
+import com.github.fi3te.notificationcron.data.model.backup.v00500.Settings
 import com.squareup.moshi.JsonDataException
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -27,9 +27,9 @@ class BackupJsonServiceTest {
 
         val backup = service.readJson(json)
 
-        assertEquals("5", backup?.version)
-        assertTrue(backup is BackupV005)
-        if (backup is BackupV005) {
+        assertEquals("500", backup?.version)
+        assertTrue(backup is BackupV00500)
+        if (backup is BackupV00500) {
             assertEquals(1, backup.notificationCrons.size)
             assertEquals(5, backup.settings.displayDurationInSeconds)
         }
@@ -54,7 +54,7 @@ class BackupJsonServiceTest {
     @Test
     fun testWriteJson() {
         val service = BackupJsonService()
-        val backup = BackupV005(
+        val backup = BackupV00500(
             listOf(
                 NotificationCron(
                     "0 0 7-22 * * ?", "title", "text", true,
