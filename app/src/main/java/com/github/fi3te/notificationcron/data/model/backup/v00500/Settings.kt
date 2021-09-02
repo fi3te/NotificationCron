@@ -1,4 +1,4 @@
-package com.github.fi3te.notificationcron.data.model.backup.v005
+package com.github.fi3te.notificationcron.data.model.backup.v00500
 
 import com.squareup.moshi.JsonClass
 

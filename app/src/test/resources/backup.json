@@ -1,5 +1,5 @@
 {
-  "version": "5",
+  "version": "500",
   "notificationCrons": [
     {
       "cron": "0 0 7-22 * * ?",
