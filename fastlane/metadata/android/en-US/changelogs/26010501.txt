@@ -1,0 +1,2 @@
+* Updated translations
+* Improved display for large font size
