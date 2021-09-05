@@ -126,7 +126,7 @@ class SettingsActivity : AppCompatActivity() {
                     CREATE_BACKUP -> {
                         val dateString =
                             LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE)
-                        val defaultFileName = "Backup_$dateString.json"
+                        val defaultFileName = "NC_$dateString.json"
                         createBackupLauncher.launch(jsonCreateFile(defaultFileName))
                     }
                     RESTORE_BACKUP -> {
